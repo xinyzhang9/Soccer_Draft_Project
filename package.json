@@ -1,0 +1,9 @@
+{
+  "dependencies": {
+    "body-parser": "^1.14.2",
+    "express": "^4.13.4",
+    "mongoose": "^4.3.7",
+    "mongoose-validator": "^1.2.4",
+    "path": "^0.12.7"
+  }
+}

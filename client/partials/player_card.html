@@ -1,0 +1,37 @@
+<head>
+	<link rel="stylesheet" href="http://futhead.cursecdn.com/static/CACHE/css/b78d6e9ffcd6.css" />
+</head>
+
+<div class="playercard card-small fut16 gold  nif" style="z-index: 20;" ng-controller:'playerCardsController'> 		
+	<div class="playercard-art"></div> 		
+	<div class="playercard-rating"><span class="value">{{player.rating}}</span></div> 		
+	<div class="playercard-name playercard-thin">{{player.alias}}</div> 		
+	<div class="playercard-position">{{player.position}}</div> 		
+	<div class="playercard-nation"><img src="{{player.img_nation}}"></div> 	
+	<div class="playercard-club"><img src="{{player.img_club}}"></div> 		
+	<div class="playercard-picture"><img src="{{player.img_player}}">
+	</div>
+	<div class="playercard-workrates">H/L</div> 		
+	<div class="playercard-attr playercard-attr1">
+		<span class="value">{{player.pace}}</span> <span class="playercard-thin">PAC</span>
+	</div> 		
+	<div class="playercard-attr playercard-attr2">
+		<span class="value">{{player.shooting}}</span> 
+		<span class="playercard-thin">SHO</span>
+	</div> 		
+	<div class="playercard-attr playercard-attr3">
+		<span class="value">{{player.passing}}</span> 
+		<span class="playercard-thin">PAS</span>
+	</div> 		
+	<div class="playercard-attr playercard-attr4">
+		<span class="value">{{player.dribbling}}</span> 
+		<span class="playercard-thin">DRI</span>
+	</div> 		
+	<div class="playercard-attr playercard-attr5">
+		<span class="value">{{player.defending}}</span> <span class="playercard-thin">DEF</span>
+	</div> 		
+	<div class="playercard-attr playercard-attr6">
+		<span class="value">{{player.physical}}</span> <span class="playercard-thin">PHY</span>
+	</div>
+	<div class="playercard-chem">CHE: <span class="value">3</span></div>
+</div>

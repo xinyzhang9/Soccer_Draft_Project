@@ -1,0 +1,13 @@
+body{
+	margin: 5px;
+
+}
+#navhead{
+	text-align: center;
+}
+#username_error{
+	color: red;
+}
+#username_success{
+	color: green;
+}

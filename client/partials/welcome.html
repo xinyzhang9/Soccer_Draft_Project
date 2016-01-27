@@ -1,0 +1,16 @@
+<div class="container" id="login" ng-controller="usersController">
+	<h2>Welcome to the Draft!</h2>
+	<h3>Build your team to start your road to glory!</h3>
+	<fieldset>
+		<legend>new user</legend>
+		<input type="text" class="form-control" ng-model="newUser.username" placeholder="enter your username">
+		<input type="submit" class="btn btn-default" value="Enter" ng-click='addUser()'/>
+	</fieldset>
+	<fieldset>
+		<legend>old user</legend>
+		<input type="text" class="form-control" ng-model="oldUser.username" placeholder="enter your username">
+		<input type="submit" class="btn btn-default" value="Enter" ng-click='loginUser()'/>
+	</fieldset>
+	<h4 id = 'username_error'></h4>
+	<h4 id = 'username_success'></h4>
+</div>
