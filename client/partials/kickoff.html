@@ -19,17 +19,23 @@
 		}
 		#AITeamList{
 			float: right;
-			border: 1px solid gray;
-			padding: 5px;
+			border: 2px solid black;
+			padding: 10px;
 			vertical-align: top;
 			display: inline-block;
 			text-align: center;
 		}
+		#controlPanel{
+			display: inline-block;
+			vertical-align: top;
+			margin: 10px;
+		}
 
 	</style>
 </head>
-<div ng-controller = 'kickoffController'>	
-	<div id = 'myTeamList'>
+<div ng-controller = 'kickoffController'>
+	<div id = "team_list">
+		<div id = 'myTeamList'>
 		<div id = 'attackers'>
 		<fieldset>
 			<legend>Statistics</legend>
@@ -212,14 +218,17 @@
 		</div>
 	</div>
 
-	<div id = 'AITeamList'>
-		Choose your opponent:
+	<div id = 'controlPanel'>
 		<select ng-model = 'AI_name'>
 			<option value="Arsenal">Arsenal</option>
 			<option value="Real_Madrid">Real Madrid</option>
 			<option value="Barcelona">Barcelona</option>
 		</select>
 		<button ng-click = 'getAITeam()' class = 'btn btn-primary'>Choose</button>
+	</div>
+
+	<div id = 'AITeamList'>
+		
 		<fieldset>
 			<legend>Statistics</legend>
 			<table class = 'table'>
@@ -399,7 +408,9 @@
 						<a href="#/gk_profile/{{AIgk._id}}" class = 'btn btn-info'>Profile</a>
 					</li>
 				</ul>
-		</div>
+			</div>
+		</div>	
+	
 	</div>
 
 

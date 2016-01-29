@@ -1,9 +1,9 @@
 myApp.controller('kickoffController',function($scope,$routeParams,playerFactory,draftFactory){
 			$scope.username = $routeParams.username;
 			$scope.attackers = [];
-			$scope.midfielders = [];
-			$scope.defenders = [];
-			$scope.gks = [];
+				$scope.midfielders = [];
+				$scope.defenders = [];
+				$scope.gks = [];
 
 			$scope.AIattackers = [];
 			$scope.AImidfielders = [];
@@ -17,6 +17,10 @@ myApp.controller('kickoffController',function($scope,$routeParams,playerFactory,
 			var def_pos = ['LB','LWB','CB','RB','RWB'];
 
 			var getDraftByUser = function(){
+				$scope.attackers = [];
+				$scope.midfielders = [];
+				$scope.defenders = [];
+				$scope.gks = [];
 				draftFactory.getDraftByUser($scope.username,function(data){
 					$scope.draft = data;
 					console.log("$scope.draft");

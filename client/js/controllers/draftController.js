@@ -137,8 +137,13 @@ myApp.controller('draftController',function($scope,$routeParams,draftFactory,pla
           accept: ".card",
           activeClass: "ui-state-default",
           hoverClass: "ui-state-hover",
-          drop: function(event, ui) {        
-              $(this).append($(ui.draggable));
+          drop: function(event, ui) {
+          	if(attacker_counter+midfielder_counter+defender_counter+goalkeeper_counter >= 11){
+            	alert("Maximum players on the pitch is 11!");
+	        }else{
+	          	$(this).append($(ui.draggable));
+	        }        
+              
           }
          });
 
@@ -148,7 +153,11 @@ myApp.controller('draftController',function($scope,$routeParams,draftFactory,pla
           activeClass: "ui-state-default",
           hoverClass: "ui-state-hover",
           drop: function(event, ui) {        
-              $(this).append($(ui.draggable));
+              if(attacker_counter+midfielder_counter+defender_counter+goalkeeper_counter >= 11){
+            	alert("Maximum players on the pitch is 11!");
+	        }else{
+	          	$(this).append($(ui.draggable));
+	        } 
           }
          });
 
@@ -158,7 +167,11 @@ myApp.controller('draftController',function($scope,$routeParams,draftFactory,pla
           activeClass: "ui-state-default",
           hoverClass: "ui-state-hover",
           drop: function(event, ui) {        
-              $(this).append($(ui.draggable));
+              if(attacker_counter+midfielder_counter+defender_counter+goalkeeper_counter >= 11){
+            	alert("Maximum players on the pitch is 11!");
+	        }else{
+	          	$(this).append($(ui.draggable));
+	        } 
           }
          });
 
@@ -168,45 +181,37 @@ myApp.controller('draftController',function($scope,$routeParams,draftFactory,pla
           activeClass: "ui-state-default",
           hoverClass: "ui-state-hover",
           drop: function(event, ui) {        
-              $(this).append($(ui.draggable));
+              if(attacker_counter+midfielder_counter+defender_counter+goalkeeper_counter >= 11){
+            	alert("Maximum players on the pitch is 11!");
+	        }else{
+	          	$(this).append($(ui.draggable));
+	        } 
           }
          });
 
         $(".stackDrop1").bind('drop',function(event,ui){
-          if(attacker_counter+midfielder_counter+defender_counter+goalkeeper_counter >= 11){
-            alert("Maximum players on the pitch is 11!");
-          }
-              $(ui.draggable).addClass('dropped');
-              $(ui.draggable).addClass('attacker');
+          
+              $(ui.draggable).attr("class","card ui-draggable ui-draggable-handle dropped attacker");
              
         
         });
 
         $(".stackDrop2").bind('drop',function(event,ui){
-          if(attacker_counter+midfielder_counter+defender_counter+goalkeeper_counter >= 11){
-            alert("Maximum players on the pitch is 11!");
-          }
-            $(ui.draggable).addClass('dropped');
-            $(ui.draggable).addClass('midfielder');
+
+            $(ui.draggable).attr("class","card ui-draggable ui-draggable-handle dropped midfielder");
           
           
         });
 
         $(".stackDrop3").bind('drop',function(event,ui){
-          if(attacker_counter+midfielder_counter+defender_counter+goalkeeper_counter >= 11){
-            alert("Maximum players on the pitch is 11!");
-          }
-            $(ui.draggable).addClass('dropped');
-            $(ui.draggable).addClass('defender');
+
+            $(ui.draggable).attr("class","card ui-draggable ui-draggable-handle dropped defender");
           
         });
 
         $(".stackDrop_gk").bind('drop',function(event,ui){
-          if(attacker_counter+midfielder_counter+defender_counter+goalkeeper_counter >= 11){
-            alert("Maximum players on the pitch is 11!");
-          }
-            $(ui.draggable).addClass('dropped');
-            $(ui.draggable).addClass('goalkeeper');
+
+            $(ui.draggable).attr("class","card ui-draggable ui-draggable-handle dropped goalkeeper");
            
         });
 
@@ -231,7 +236,13 @@ myApp.controller('draftController',function($scope,$routeParams,draftFactory,pla
 
         $('#validator').click(function(){
           if((attacker_counter + midfielder_counter + defender_counter + goalkeeper_counter == 11) && (goalkeeper_counter == 1)){
-            var str = "";           
+            var str = "";
+            //reset
+            $scope.attackers_on = [];
+			$scope.midfielders_on = [];
+			$scope.defenders_on = [];
+			$scope.gks_on = [];
+			           
             str+=defender_counter.toString();
             str+=midfielder_counter.toString();
             str+=attacker_counter.toString();

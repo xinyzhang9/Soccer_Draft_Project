@@ -101,7 +101,11 @@ myApp.controller('packsController',function($scope,$routeParams,packFactory,play
 		});
 	})
 
+	//check if user has a team
+	
 
 
 
-		});
+
+
+});
