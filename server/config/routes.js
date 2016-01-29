@@ -86,5 +86,10 @@ module.exports = function(app){
 		goldRareGKs.getPlayersArray(req,res);
 	});
 
+	//check if user has draft
+	app.get('/checkUserDraft/:username',function(req,res){
+		drafts.checkUserDraft(req,res);
+	});
+
 }
 

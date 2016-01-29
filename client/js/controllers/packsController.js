@@ -10,6 +10,8 @@ myApp.controller('packsController',function($scope,$routeParams,packFactory,play
 			$scope.num_mid = 0;
 			$scope.num_att = 0;
 			$scope.num_gk = 0;
+
+			$scope.disable = false;
 			var att_pos = ["ST","CF","LW","RW","LF","RF"];
 			var mid_pos = ["CAM","CDM","CM","LM","RM"];
 			var def_pos = ['LB','LWB','CB','RB','RWB'];
@@ -74,6 +76,8 @@ myApp.controller('packsController',function($scope,$routeParams,packFactory,play
 			$scope.removeTeam = function(){
 				draftFactory.removeDraftByUser($scope.username,function(){
 					$scope.messages = "draft deleted from database successfully!"
+					//enable the pack buttons
+					checkUserDraft();
 
 				})
 			};
@@ -99,10 +103,29 @@ myApp.controller('packsController',function($scope,$routeParams,packFactory,play
 		$('#getGK').click(function(){
 			$('#goalkeeper').fadeIn("slow");
 		});
+
 	})
 
 	//check if user has a team
-	
+	var checkUserDraft = function(){
+		draftFactory.checkUserDraft($scope.username,function(data){
+			if(data.result == true){
+				$scope.disable = true;
+				alert("You have already got a team! You must delete your team before open new packs!");
+				$('#getGoldPlayer').prop("disabled",true);
+				$('#getCaptain').prop("disabled",true);
+				$('#getGK').prop("disabled",true);
+			}else{
+				$scope.disable = false;
+				alert("You have no team yet! Start building!");
+				$('#getGoldPlayer').prop("disabled",false);
+				$('#getCaptain').prop("disabled",false);
+				$('#getGK').prop("disabled",false);
+			}
+		})
+	}
+
+	checkUserDraft();
 
 
 

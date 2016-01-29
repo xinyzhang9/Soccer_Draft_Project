@@ -222,6 +222,21 @@ module.exports = (function(){
 								}
 							})
 		},
+		//if true: user has a draft,false:user has no draft
+		checkUserDraft:function(req,res){
+			var username = req.params.username;
+			Draft.find({username:username},function(err,output){
+				if(err){
+					console.log(output);
+				}else{
+					if(output.length>0){
+						res.json({result:true});
+					}else{
+						res.json({result:false});
+					}
+				}
+			})
+		}
 
 
 

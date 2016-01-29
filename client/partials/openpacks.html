@@ -7,13 +7,13 @@
 			text-align: center;
 		}
 		.left_div{
-			width: 800px;
+			width: 50%;
 			display: inline-block;
 			vertical-align: top;
 			float: left;
 		}
 		.right_div{
-			width: 500px;
+			width: 40%;
 			display: inline-block;
 			vertical-align: top;
 			float: right;
@@ -38,7 +38,9 @@
 <div ng-controller = 'packsController'>
 	<fieldset>
 		<legend>{{username}},please choose the packs.<span class = 'red'>{{messages}}</span></legend>
-		<h5></h5>
+	<div class = 'wrapper'>
+		
+	
 		<div class = 'left_div'>
 			<button id = 'getCaptain' ng-click = 'getCaptain()' class = 'btn btn-warning'>Get Captain</button>
 			<div id = 'captain'>
@@ -193,7 +195,7 @@
 			</table>
 		</div>
 	</fieldset>
-	
+</div>
 	
 
 </div>

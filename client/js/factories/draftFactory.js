@@ -59,6 +59,11 @@
 					callback(output);
 				})
 			};
+			factory.checkUserDraft = function(username,callback){
+				$http.get('/checkUserDraft/'+username).success(function(output){
+					callback(output);
+				})
+			}
 			
 			return factory;
 		})
