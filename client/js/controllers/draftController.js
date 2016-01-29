@@ -50,25 +50,19 @@ myApp.controller('draftController',function($scope,$routeParams,draftFactory,pla
 				var info = {
 					username:$scope.username,
 					formation:$scope.formation,
-
-					attackers_on:$scope.attackers_on,
-					midfielders_on:$scope.midfielders_on,
-					defenders_on:$scope.defenders_on,
-					gks_on:$scope.gks_on,
-
 				}
 				console.log(info);
 				draftFactory.updateFormation(info,function(){
 					$scope.messages = "formation updated database successfully!"
 					alert('your formation is saved!');
 					//
-					draftFactory.updateAttackers($scope.attackers_on,function(){
+					draftFactory.updateAttackers($scope.attackers_on,$scope.username,function(){
 						alert('your attackers are saved!');
-						draftFactory.updateMidfielders($scope.midfielders_on,function(){
+						draftFactory.updateMidfielders($scope.midfielders_on,$scope.username,function(){
 							alert('your midfielders are saved!');
-							draftFactory.updateDefenders($scope.defenders_on,function(){
+							draftFactory.updateDefenders($scope.defenders_on,$scope.username,function(){
 								alert('your defenders are saved!');
-								draftFactory.updateGKs($scope.gks_on,function(){
+								draftFactory.updateGKs($scope.gks_on,$scope.username,function(){
 									alert('your gks are saved!');
 								})
 							})

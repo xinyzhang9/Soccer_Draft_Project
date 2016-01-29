@@ -147,77 +147,84 @@ module.exports = (function(){
 		updateFormation:function(req,res){
 			var username = req.body.username;
 			var formation = req.body.formation;
-			var attackers_id = req.body.attackers_on;
-			var midfielders_id = req.body.midfielders_on;
-			var defenders_id = req.body.defenders_on;
-			var gks_id = req.body.gks_on;
-
-			var attackers_on = [];
-			var midfielders_on = [];
-			var defenders_on = [];
-			var gks_on = [];
-			var results = {
-							attackers_on:attackers_on,
-							midfielders_on:midfielders_on,
-							defenders_on:defenders_on,
-							gks_on:gks_on,
-			};
-
-			while(results.attackers_on.length + results.midfielders_on.length
-					 + results.defenders_on.length + results.gks_on.length < 11){
-				for(x in attackers_id){
-					GoldRarePlayers.findOne({_id:attackers_id[x]},function(err,player){
-						if(err){
-							console.log(err);
-						}else{
-							 attackers_on.push(player);
-						}
-					})
-				}
-				for(x in midfielders_id){
-					GoldRarePlayers.findOne({_id:midfielders_id[x]},function(err,player){
-						if(err){
-							console.log(err);
-						}else{
-							 midfielders_on.push(player);
-						}
-					})
-				}
-				for(x in defenders_id){
-					GoldRarePlayers.findOne({_id:defenders_id[x]},function(err,player){
-						if(err){
-							console.log(err);
-						}else{
-							 defenders_on.push(player);
-						}
-					})
-				}
-				for(x in gks_id){
-					GoldRarePlayers.findOne({_id:gks_id[x]},function(err,player){
-						if(err){
-							console.log(err);
-						}else{
-							 gks_on.push(player);
-						}
-					})
-				}
-
-			}
-			console.log(results);
-			
-
 			Draft.update({username:username},{
-												$set:{
-														formation:formation,
-													}
-											  },function(err,output){
-											  	if(err){
-											  		console.log(err);
-											  	}else{
-											  		res.json(output);
-											  	}
-											  });
-		}
+				$set:{
+						formation:formation,
+						}
+					},function(err,output){
+						if(err){
+							console.log(err);
+						}else{
+							res.json(output);
+						}
+			});
+		},
+		updateAttackers:function(req,res){
+			var arr = req.body.attackers_on;
+			var username = req.body.username;
+			Draft.update({username:username},{
+								$set:{
+									attackers_on:arr,
+								}
+							},function(err,output){
+								if(err){
+									console.log(err);
+								}else{
+									res.json(output);
+								}
+							})
+		},
+
+		updateMidfielders:function(req,res){
+			var arr = req.body.midfielders_on;
+			var username = req.body.username;
+			Draft.update({username:username},{
+								$set:{
+									midfielders_on:arr,
+								}
+							},function(err,output){
+								if(err){
+									console.log(err);
+								}else{
+									res.json(output);
+								}
+							})
+		},
+
+		updateDefenders:function(req,res){
+			var arr = req.body.defenders_on;
+			var username = req.body.username;
+			Draft.update({username:username},{
+								$set:{
+									defenders_on:arr,
+								}
+							},function(err,output){
+								if(err){
+									console.log(err);
+								}else{
+									res.json(output);
+								}
+							})
+		},
+
+		updateGKs:function(req,res){
+			var arr = req.body.gks_on;
+			var username = req.body.username;
+			Draft.update({username:username},{
+								$set:{
+									gks_on:arr,
+								}
+							},function(err,output){
+								if(err){
+									console.log(err);
+								}else{
+									res.json(output);
+								}
+							})
+		},
+
+
+
 
 
 	

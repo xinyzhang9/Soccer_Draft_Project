@@ -31,31 +31,31 @@
 					callback(output);
 				})
 			};
-			factory.updateAttackers = function(info,callback){
-				var info = {attackers_on:info.attackers_on};
-				$http.post('/updateAttakers_on',info).success(function(output){
-					console.log('updateAttakers_on success');
+			factory.updateAttackers = function(arr,username,callback){
+				var info = {attackers_on:arr,username:username};
+				$http.post('/updateAttackers',info).success(function(output){
+					console.log('updateAttackers success');
 					callback(output);
 				})
 			};
-			factory.updateMidfielders = function(info,callback){
-				var info = {midfielders_on:info.midfielders_on};
-				$http.post('/updateMidfielders_on',info).success(function(output){
-					console.log('updateMidfielders_on success');
+			factory.updateMidfielders = function(arr,username,callback){
+				var info = {midfielders_on:arr,username:username};
+				$http.post('/updateMidfielders',info).success(function(output){
+					console.log('updateMidfielders success');
 					callback(output);
 				})
 			};
-			factory.updateDefenders = function(info,callback){
-				var info = {defenders_on:info.defenders_on};
-				$http.post('/updateDefenders_on',info).success(function(output){
-					console.log('updateDefenders_on success');
+			factory.updateDefenders = function(arr,username,callback){
+				var info = {defenders_on:arr,username:username};
+				$http.post('/updateDefenders',info).success(function(output){
+					console.log('updateDefenders success');
 					callback(output);
 				})
 			};
-			factory.updateGKs = function(info,callback){
-				var info = {gks_on:info.gks_on};
-				$http.post('/updateGKs_on',info).success(function(output){
-					console.log('updateGKs_on success');
+			factory.updateGKs = function(arr,username,callback){
+				var info = {gks_on:arr,username:username};
+				$http.post('/updateGKs',info).success(function(output){
+					console.log('updateGKs success');
 					callback(output);
 				})
 			};

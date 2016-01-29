@@ -65,6 +65,19 @@ module.exports = function(app){
 		drafts.updateFormation(req,res);
 	});
 
+	app.post('/updateAttackers',function(req,res){
+		drafts.updateAttackers(req,res);
+	});
+	app.post('/updateMidfielders',function(req,res){
+		drafts.updateMidfielders(req,res);
+	});
+	app.post('/updateDefenders',function(req,res){
+		drafts.updateDefenders(req,res);
+	});
+	app.post('/updateGKs',function(req,res){
+		drafts.updateGKs(req,res);
+	});
+
 	//request by array
 	app.post('/getPlayersArray',function(req,res){
 		goldRarePlayers.getPlayersArray(req,res);
