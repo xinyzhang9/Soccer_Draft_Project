@@ -8,6 +8,8 @@
 	<script src = './library/jquery-2.2.0.min.js'></script>
 	<script src = './library/jquery_ui/jquery-ui.js'></script>
 
+	<script src="./library/underscore-min.js"></script>
+
 	<!-- Latest compiled and minified CSS -->
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
 
@@ -37,7 +39,8 @@
 	<script type="text/javascript" src="./js/controllers/packsController.js"></script>
 	<script type="text/javascript" src="./js/controllers/playerProfileController.js"></script>
 	<script type="text/javascript" src="./js/controllers/gkProfileController.js"></script>
-	
+	<script type="text/javascript" src="./js/controllers/tournamentsController.js"></script>
+	<script type="text/javascript" src="./js/controllers/kickoffController.js"></script>
 
 
 	<script>
@@ -49,7 +52,7 @@
 <body>
 	<div>
 		<div id = 'navhead' ng-controller = 'usersController'>
-			<a href="#/openPacks/{{currentUser.username}}" class = 'btn btn-danger'>Open Packs</a>  |  <a href="#/manageTeam/{{currentUser.username}}" class = 'btn btn-success'>Manage Team</a>  |  <a href="#/list/{{currentUser.username}}" class = 'btn btn-primary'>Team Summary</a>  |  <a href="#/competition/{{currentUser.username}}" class = 'btn btn-warning'>Competition</a>  |  <a href="#/team_profile/{{currentUser.username}}" class = 'btn btn-info'>About</a>
+			<a href="#/openPacks/{{currentUser.username}}" class = 'btn btn-danger'>Open Packs</a>  |  <a href="#/manageTeam/{{currentUser.username}}" class = 'btn btn-success'>Manage Team</a>  |  <a href="#/list/{{currentUser.username}}" class = 'btn btn-primary'>Team Summary</a>  |  <a href="#/tournament/{{currentUser.username}}" class = 'btn btn-warning'>Tournament</a>  |  <a href="#/kickoff/{{currentUser.username}}" class = 'btn btn-success'>Kick Off</a>  |  <a href="#/about/{{currentUser.username}}" class = 'btn btn-info'>About</a>  |  <a href="#/" class = 'btn btn-danger'>Log Out</a>
 			<h4>welcome {{currentUser.username}}</h4>
 		</div>
 		

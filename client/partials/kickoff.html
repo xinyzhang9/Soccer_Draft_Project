@@ -1,0 +1,408 @@
+<head>
+	<link rel="stylesheet" href="http://futhead.cursecdn.com/static/CACHE/css/b78d6e9ffcd6.css" />
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+	<style>
+		li{
+			display: inline-block;
+			text-align: center;
+		}
+		.red{
+			color: red;
+		}
+		#myTeamList{
+			float:left;
+			border: 2px solid orange;
+			padding: 10px;
+			vertical-align: top;
+			display: inline-block;
+			text-align: center;
+		}
+		#AITeamList{
+			float: right;
+			border: 1px solid gray;
+			padding: 5px;
+			vertical-align: top;
+			display: inline-block;
+			text-align: center;
+		}
+
+	</style>
+</head>
+<div ng-controller = 'kickoffController'>	
+	<div id = 'myTeamList'>
+		<div id = 'attackers'>
+		<fieldset>
+			<legend>Statistics</legend>
+			<table class = 'table'>
+				<tr>
+					<th>Attacker Rating</th>
+					<th>Midfielder Rating</th>
+					<th>Defender Rating</th>
+					<th>Formation</th>
+				</tr>
+				<tr>
+					<td><span class = 'red' ng-bind = 'att_rating.toPrecision(3)'></span></td>
+					<td><span class = 'red' ng-bind = 'mid_rating.toPrecision(3)'></span></td>
+					<td><span class = 'red' ng-bind = 'def_rating.toPrecision(3)'></span></td>
+					<td ng-bind = 'draft.formation'></td>
+				</tr>
+			</table>
+		</fieldset>
+			<ul>
+					<li ng-repeat = "attacker in attackers | orderBy: '-rating' ">
+						<div class="playercard card-small fut16 gold  nif" style="z-index: 20;" ng-controller:'playerCardsController'> 		
+								<div class="playercard-art"></div> 		
+							<div class="playercard-rating"><span class="value">{{attacker.rating}}</span></div> 		
+							<div class="playercard-name playercard-thin">{{attacker.alias}}</div> 		
+							<div class="playercard-position">{{attacker.position}}</div> 		
+							<div class="playercard-nation"><img src="{{attacker.img_nation}}"></div> 	
+							<div class="playercard-club"><img src="{{attacker.img_club}}"></div> 		
+							<div class="playercard-picture"><img src="{{attacker.img_player}}">
+							</div>
+							<div class="playercard-workrates">{{attacker.workrates[0]}}/{{attacker.workrates[attacker.workrates.indexOf('/')+2]}}</div> 		
+							<div class="playercard-attr playercard-attr1">
+								<span class="value">{{attacker.pace}}</span> <span class="playercard-thin">PAC</span>
+							</div> 		
+							<div class="playercard-attr playercard-attr2">
+									<span class="value">{{attacker.shooting}}</span> 
+								<span class="playercard-thin">SHO</span>
+							</div> 		
+							<div class="playercard-attr playercard-attr3">
+								<span class="value">{{attacker.passing}}</span> 
+								<span class="playercard-thin">PAS</span>
+							</div> 		
+							<div class="playercard-attr playercard-attr4">
+								<span class="value">{{attacker.dribbling}}</span> 
+								<span class="playercard-thin">DRI</span>
+							</div> 		
+							<div class="playercard-attr playercard-attr5">
+									<span class="value">{{attacker.defending}}</span> <span class="playercard-thin">DEF</span>
+							</div> 		
+							<div class="playercard-attr playercard-attr6">
+								<span class="value">{{attacker.physical}}</span> <span class="playercard-thin">PHY</span>
+							</div>
+							<div class="playercard-chem">CHE: <span class="value">0</span></div>
+						</div>
+						<a href="#/player_profile/{{attacker._id}}" class = 'btn btn-info'>Profile</a>
+					</li>
+				</ul>
+		</div>
+	
+		<div id = 'midfielders'>
+			<ul>
+					<li ng-repeat = "midfielder in midfielders | orderBy: '-rating'">
+						<div class="playercard card-small fut16 gold  nif" style="z-index: 20;" ng-controller:'playerCardsController'> 		
+								<div class="playercard-art"></div> 		
+							<div class="playercard-rating"><span class="value">{{midfielder.rating}}</span></div> 		
+							<div class="playercard-name playercard-thin">{{midfielder.alias}}</div> 		
+							<div class="playercard-position">{{midfielder.position}}</div> 		
+							<div class="playercard-nation"><img src="{{midfielder.img_nation}}"></div> 	
+							<div class="playercard-club"><img src="{{midfielder.img_club}}"></div> 		
+							<div class="playercard-picture"><img src="{{midfielder.img_player}}">
+							</div>
+							<div class="playercard-workrates">{{midfielder.workrates[0]}}/{{midfielder.workrates[midfielder.workrates.indexOf('/')+2]}}</div> 		
+							<div class="playercard-attr playercard-attr1">
+								<span class="value">{{midfielder.pace}}</span> <span class="playercard-thin">PAC</span>
+							</div> 		
+							<div class="playercard-attr playercard-attr2">
+									<span class="value">{{midfielder.shooting}}</span> 
+								<span class="playercard-thin">SHO</span>
+							</div> 		
+							<div class="playercard-attr playercard-attr3">
+								<span class="value">{{midfielder.passing}}</span> 
+								<span class="playercard-thin">PAS</span>
+							</div> 		
+							<div class="playercard-attr playercard-attr4">
+								<span class="value">{{midfielder.dribbling}}</span> 
+								<span class="playercard-thin">DRI</span>
+							</div> 		
+							<div class="playercard-attr playercard-attr5">
+									<span class="value">{{midfielder.defending}}</span> <span class="playercard-thin">DEF</span>
+							</div> 		
+							<div class="playercard-attr playercard-attr6">
+								<span class="value">{{midfielder.physical}}</span> <span class="playercard-thin">PHY</span>
+							</div>
+							<div class="playercard-chem">CHE: <span class="value">0</span></div>
+						</div>
+						<a href="#/player_profile/{{midfielder._id}}" class = 'btn btn-info'>Profile</a>
+					</li>
+				</ul>
+		</div>
+
+		<div id = 'defenders'>
+			<ul>
+					<li ng-repeat = "defender in defenders | orderBy: '-rating'">
+						<div class="playercard card-small fut16 gold  nif" style="z-index: 20;" ng-controller:'playerCardsController'> 		
+								<div class="playercard-art"></div> 		
+							<div class="playercard-rating"><span class="value">{{defender.rating}}</span></div> 		
+							<div class="playercard-name playercard-thin">{{defender.alias}}</div> 		
+							<div class="playercard-position">{{defender.position}}</div> 		
+							<div class="playercard-nation"><img src="{{defender.img_nation}}"></div> 	
+							<div class="playercard-club"><img src="{{defender.img_club}}"></div> 		
+							<div class="playercard-picture"><img src="{{defender.img_player}}">
+							</div>
+							<div class="playercard-workrates">{{defender.workrates[0]}}/{{defender.workrates[defender.workrates.indexOf('/')+2]}}</div> 		
+							<div class="playercard-attr playercard-attr1">
+								<span class="value">{{defender.pace}}</span> <span class="playercard-thin">PAC</span>
+							</div> 		
+							<div class="playercard-attr playercard-attr2">
+									<span class="value">{{defender.shooting}}</span> 
+								<span class="playercard-thin">SHO</span>
+							</div> 		
+							<div class="playercard-attr playercard-attr3">
+								<span class="value">{{defender.passing}}</span> 
+								<span class="playercard-thin">PAS</span>
+							</div> 		
+							<div class="playercard-attr playercard-attr4">
+								<span class="value">{{defender.dribbling}}</span> 
+								<span class="playercard-thin">DRI</span>
+							</div> 		
+							<div class="playercard-attr playercard-attr5">
+									<span class="value">{{defender.defending}}</span> <span class="playercard-thin">DEF</span>
+							</div> 		
+							<div class="playercard-attr playercard-attr6">
+								<span class="value">{{defender.physical}}</span> <span class="playercard-thin">PHY</span>
+							</div>
+							<div class="playercard-chem">CHE: <span class="value">0</span></div>
+						</div>
+						<a href="#/player_profile/{{defender._id}}" class = 'btn btn-info'>Profile</a>
+					</li>
+				</ul>
+		</div>
+
+		<div id = 'goalkeeper'>
+				<ul>
+					<li ng-repeat = "gk in gks | orderBy: '-rating'">
+						<div class="playercard card-small fut16 gold  nif" style="z-index: 20;" ng-controller:'playerCardsController'> 		
+								<div class="playercard-art"></div> 		
+							<div class="playercard-rating"><span class="value">{{gk.rating}}</span></div> 		
+							<div class="playercard-name playercard-thin">{{gk.alias}}</div> 		
+							<div class="playercard-position">{{gk.position}}</div> 		
+							<div class="playercard-nation"><img src="{{gk.img_nation}}"></div> 	
+							<div class="playercard-club"><img src="{{gk.img_club}}"></div> 		
+							<div class="playercard-picture"><img src="{{gk.img_player}}">
+							</div>
+							<div class="playercard-workrates">{{gk.workrates[0]}}/{{gk.workrates[gk.workrates.indexOf('/')+2]}}</div> 		
+							<div class="playercard-attr playercard-attr1">
+								<span class="value">{{gk.dive}}</span> <span class="playercard-thin">DIV</span>
+							</div> 		
+							<div class="playercard-attr playercard-attr2">
+									<span class="value">{{gk.hand}}</span> 
+								<span class="playercard-thin">HAN</span>
+							</div> 		
+							<div class="playercard-attr playercard-attr3">
+								<span class="value">{{gk.kick}}</span> 
+								<span class="playercard-thin">KIC</span>
+							</div> 		
+							<div class="playercard-attr playercard-attr4">
+								<span class="value">{{gk.reflex}}</span> 
+								<span class="playercard-thin">REF</span>
+							</div> 		
+							<div class="playercard-attr playercard-attr5">
+									<span class="value">{{gk.speed}}</span> <span class="playercard-thin">SPE</span>
+							</div> 		
+							<div class="playercard-attr playercard-attr6">
+								<span class="value">{{gk.pos}}</span> <span class="playercard-thin">POS</span>
+							</div>
+							<div class="playercard-chem">CHE: <span class="value">0</span></div>
+						</div>
+						<a href="#/gk_profile/{{gk._id}}" class = 'btn btn-info'>Profile</a>
+					</li>
+				</ul>
+		</div>
+	</div>
+
+	<div id = 'AITeamList'>
+		Choose your opponent:
+		<select ng-model = 'AI_name'>
+			<option value="Arsenal">Arsenal</option>
+			<option value="Real_Madrid">Real Madrid</option>
+			<option value="Barcelona">Barcelona</option>
+		</select>
+		<button ng-click = 'getAITeam()' class = 'btn btn-primary'>Choose</button>
+		<fieldset>
+			<legend>Statistics</legend>
+			<table class = 'table'>
+				<tr>
+					<th>Attacker Rating</th>
+					<th>Midfielder Rating</th>
+					<th>Defender Rating</th>
+					<th>Formation</th>
+				</tr>
+				<tr>
+					<td><span class = 'red' ng-bind = 'AI_att_rating.toPrecision(3)'></span></td>
+					<td><span class = 'red' ng-bind = 'AI_mid_rating.toPrecision(3)'></span></td>
+					<td><span class = 'red' ng-bind = 'AI_def_rating.toPrecision(3)'></span></td>
+					<td ng-bind = 'AIFormation'></td>
+				</tr>
+			</table>
+		</fieldset>
+		<div id = 'AIattackers'>
+			<ul>
+					<li ng-repeat = "AIattacker in AIattackers | orderBy: '-rating' ">
+						<div class="playercard card-small fut16 gold  nif" style="z-index: 20;" ng-controller:'playerCardsController'> 		
+								<div class="playercard-art"></div> 		
+							<div class="playercard-rating"><span class="value">{{AIattacker.rating}}</span></div> 		
+							<div class="playercard-name playercard-thin">{{AIattacker.alias}}</div> 		
+							<div class="playercard-position">{{AIattacker.position}}</div> 		
+							<div class="playercard-nation"><img src="{{AIattacker.img_nation}}"></div> 	
+							<div class="playercard-club"><img src="{{AIattacker.img_club}}"></div> 		
+							<div class="playercard-picture"><img src="{{AIattacker.img_player}}">
+							</div>
+							<div class="playercard-workrates">{{AIattacker.workrates[0]}}/{{AIattacker.workrates[AIattacker.workrates.indexOf('/')+2]}}</div> 		
+							<div class="playercard-attr playercard-attr1">
+								<span class="value">{{AIattacker.pace}}</span> <span class="playercard-thin">PAC</span>
+							</div> 		
+							<div class="playercard-attr playercard-attr2">
+									<span class="value">{{AIattacker.shooting}}</span> 
+								<span class="playercard-thin">SHO</span>
+							</div> 		
+							<div class="playercard-attr playercard-attr3">
+								<span class="value">{{AIattacker.passing}}</span> 
+								<span class="playercard-thin">PAS</span>
+							</div> 		
+							<div class="playercard-attr playercard-attr4">
+								<span class="value">{{AIattacker.dribbling}}</span> 
+								<span class="playercard-thin">DRI</span>
+							</div> 		
+							<div class="playercard-attr playercard-attr5">
+									<span class="value">{{AIattacker.defending}}</span> <span class="playercard-thin">DEF</span>
+							</div> 		
+							<div class="playercard-attr playercard-attr6">
+								<span class="value">{{AIattacker.physical}}</span> <span class="playercard-thin">PHY</span>
+							</div>
+							<div class="playercard-chem">CHE: <span class="value">10</span></div>
+						</div>
+						<a href="#/player_profile/{{AIattacker._id}}" class = 'btn btn-info'>Profile</a>
+					</li>
+				</ul>
+		</div>
+	
+		<div id = 'AImidfielders'>
+			<ul>
+					<li ng-repeat = "AImidfielder in AImidfielders | orderBy: '-rating'">
+						<div class="playercard card-small fut16 gold  nif" style="z-index: 20;" ng-controller:'playerCardsController'> 		
+								<div class="playercard-art"></div> 		
+							<div class="playercard-rating"><span class="value">{{AImidfielder.rating}}</span></div> 		
+							<div class="playercard-name playercard-thin">{{AImidfielder.alias}}</div> 		
+							<div class="playercard-position">{{AImidfielder.position}}</div> 		
+							<div class="playercard-nation"><img src="{{AImidfielder.img_nation}}"></div> 	
+							<div class="playercard-club"><img src="{{AImidfielder.img_club}}"></div> 		
+							<div class="playercard-picture"><img src="{{AImidfielder.img_player}}">
+							</div>
+							<div class="playercard-workrates">{{AImidfielder.workrates[0]}}/{{AImidfielder.workrates[AImidfielder.workrates.indexOf('/')+2]}}</div> 		
+							<div class="playercard-attr playercard-attr1">
+								<span class="value">{{AImidfielder.pace}}</span> <span class="playercard-thin">PAC</span>
+							</div> 		
+							<div class="playercard-attr playercard-attr2">
+									<span class="value">{{AImidfielder.shooting}}</span> 
+								<span class="playercard-thin">SHO</span>
+							</div> 		
+							<div class="playercard-attr playercard-attr3">
+								<span class="value">{{AImidfielder.passing}}</span> 
+								<span class="playercard-thin">PAS</span>
+							</div> 		
+							<div class="playercard-attr playercard-attr4">
+								<span class="value">{{AImidfielder.dribbling}}</span> 
+								<span class="playercard-thin">DRI</span>
+							</div> 		
+							<div class="playercard-attr playercard-attr5">
+									<span class="value">{{AImidfielder.defending}}</span> <span class="playercard-thin">DEF</span>
+							</div> 		
+							<div class="playercard-attr playercard-attr6">
+								<span class="value">{{AImidfielder.physical}}</span> <span class="playercard-thin">PHY</span>
+							</div>
+							<div class="playercard-chem">CHE: <span class="value">10</span></div>
+						</div>
+						<a href="#/player_profile/{{AImidfielder._id}}" class = 'btn btn-info'>Profile</a>
+					</li>
+				</ul>
+		</div>
+
+		<div id = 'AIdefenders'>
+			<ul>
+					<li ng-repeat = "AIdefender in AIdefenders | orderBy: '-rating'">
+						<div class="playercard card-small fut16 gold  nif" style="z-index: 20;" ng-controller:'playerCardsController'> 		
+								<div class="playercard-art"></div> 		
+							<div class="playercard-rating"><span class="value">{{AIdefender.rating}}</span></div> 		
+							<div class="playercard-name playercard-thin">{{AIdefender.alias}}</div> 		
+							<div class="playercard-position">{{AIdefender.position}}</div> 		
+							<div class="playercard-nation"><img src="{{AIdefender.img_nation}}"></div> 	
+							<div class="playercard-club"><img src="{{AIdefender.img_club}}"></div> 		
+							<div class="playercard-picture"><img src="{{AIdefender.img_player}}">
+							</div>
+							<div class="playercard-workrates">{{AIdefender.workrates[0]}}/{{AIdefender.workrates[AIdefender.workrates.indexOf('/')+2]}}</div> 		
+							<div class="playercard-attr playercard-attr1">
+								<span class="value">{{AIdefender.pace}}</span> <span class="playercard-thin">PAC</span>
+							</div> 		
+							<div class="playercard-attr playercard-attr2">
+									<span class="value">{{AIdefender.shooting}}</span> 
+								<span class="playercard-thin">SHO</span>
+							</div> 		
+							<div class="playercard-attr playercard-attr3">
+								<span class="value">{{AIdefender.passing}}</span> 
+								<span class="playercard-thin">PAS</span>
+							</div> 		
+							<div class="playercard-attr playercard-attr4">
+								<span class="value">{{AIdefender.dribbling}}</span> 
+								<span class="playercard-thin">DRI</span>
+							</div> 		
+							<div class="playercard-attr playercard-attr5">
+									<span class="value">{{AIdefender.defending}}</span> <span class="playercard-thin">DEF</span>
+							</div> 		
+							<div class="playercard-attr playercard-attr6">
+								<span class="value">{{AIdefender.physical}}</span> <span class="playercard-thin">PHY</span>
+							</div>
+							<div class="playercard-chem">CHE: <span class="value">10</span></div>
+						</div>
+						<a href="#/player_profile/{{AIdefender._id}}" class = 'btn btn-info'>Profile</a>
+					</li>
+				</ul>
+		</div>
+
+		<div id = 'AIgoalkeeper'>
+				<ul>
+					<li ng-repeat = "AIgk in AIgks | orderBy: '-rating'">
+						<div class="playercard card-small fut16 gold  nif" style="z-index: 20;" ng-controller:'playerCardsController'> 		
+								<div class="playercard-art"></div> 		
+							<div class="playercard-rating"><span class="value">{{AIgk.rating}}</span></div> 		
+							<div class="playercard-name playercard-thin">{{AIgk.alias}}</div> 		
+							<div class="playercard-position">{{AIgk.position}}</div> 		
+							<div class="playercard-nation"><img src="{{AIgk.img_nation}}"></div> 	
+							<div class="playercard-club"><img src="{{AIgk.img_club}}"></div> 		
+							<div class="playercard-picture"><img src="{{AIgk.img_player}}">
+							</div>
+							<div class="playercard-workrates">{{AIgk.workrates[0]}}/{{AIgk.workrates[AIgk.workrates.indexOf('/')+2]}}</div> 		
+							<div class="playercard-attr playercard-attr1">
+								<span class="value">{{AIgk.dive}}</span> <span class="playercard-thin">DIV</span>
+							</div> 		
+							<div class="playercard-attr playercard-attr2">
+									<span class="value">{{AIgk.hand}}</span> 
+								<span class="playercard-thin">HAN</span>
+							</div> 		
+							<div class="playercard-attr playercard-attr3">
+								<span class="value">{{AIgk.kick}}</span> 
+								<span class="playercard-thin">KIC</span>
+							</div> 		
+							<div class="playercard-attr playercard-attr4">
+								<span class="value">{{AIgk.reflex}}</span> 
+								<span class="playercard-thin">REF</span>
+							</div> 		
+							<div class="playercard-attr playercard-attr5">
+									<span class="value">{{AIgk.speed}}</span> <span class="playercard-thin">SPE</span>
+							</div> 		
+							<div class="playercard-attr playercard-attr6">
+								<span class="value">{{AIgk.pos}}</span> <span class="playercard-thin">POS</span>
+							</div>
+							<div class="playercard-chem">CHE: <span class="value">10</span></div>
+						</div>
+						<a href="#/gk_profile/{{AIgk._id}}" class = 'btn btn-info'>Profile</a>
+					</li>
+				</ul>
+		</div>
+	</div>
+
+
+
+
+</div>

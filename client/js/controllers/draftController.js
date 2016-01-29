@@ -57,13 +57,13 @@ myApp.controller('draftController',function($scope,$routeParams,draftFactory,pla
 					alert('your formation is saved!');
 					//
 					draftFactory.updateAttackers($scope.attackers_on,$scope.username,function(){
-						alert('your attackers are saved!');
+						// alert('your attackers are saved!');
 						draftFactory.updateMidfielders($scope.midfielders_on,$scope.username,function(){
-							alert('your midfielders are saved!');
+							// alert('your midfielders are saved!');
 							draftFactory.updateDefenders($scope.defenders_on,$scope.username,function(){
-								alert('your defenders are saved!');
+								// alert('your defenders are saved!');
 								draftFactory.updateGKs($scope.gks_on,$scope.username,function(){
-									alert('your gks are saved!');
+									// alert('your gks are saved!');
 								})
 							})
 						})
@@ -256,8 +256,6 @@ myApp.controller('draftController',function($scope,$routeParams,draftFactory,pla
             $('.goalkeeper').trigger('click');
 
             //we have saved the 4 id arrays! then call $scope function to start http request
-
-            
 
           }else{
             alert('your squad is not valid!!!');

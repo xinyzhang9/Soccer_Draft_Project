@@ -32,31 +32,6 @@
 		}
 
 	</style>
-	<script>
-	$(document).ready(function(){
-		$( document ).on( 'click',".chooseButton",function() {
-			$('#pack_player').hide();
-		});
-		$('#getGoldPlayer').click(function(){
-			$('#pack_player').show();
-		});
-		$( document ).on( 'click',".chooseCapButton",function() {
-			$('.chooseCapButton').prop("disabled",true);
-			$('#captain').hide();
-		});
-		$('#getCaptain').click(function(){
-			$('#getCaptain').hide();
-		})
-		$( document ).on( 'click',".chooseGKButton",function() {
-			$('.chooseGKButton').prop("disabled",true);
-			$('#goalkeeper').hide();
-		});
-		$('#getGK').click(function(){
-			$('#goalkeeper').show();
-		});
-	})
-		
-	</script>
 </head>
 <div ng-controller = 'packsController'>
 	<fieldset>

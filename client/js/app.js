@@ -27,17 +27,17 @@ var myApp = angular.module('myApp',['ngRoute']);
 			.when('/teamSummary/:username',{
 				templateUrl : './partials/teamSummary.html'
 			})
-			.when('/competition/:username',{
-				templateUrl : './partials/cup.html'
+			.when('/tournament/:username',{
+				templateUrl : './partials/tournament.html'
+			})
+			.when('/kickoff/:username',{
+				templateUrl : './partials/kickoff.html'
 			})
 			.when('/openPacks/:username',{
 				templateUrl : './partials/openpacks.html'
 			})
-			.when('/f/442',{
-				templateUrl : './partials/formations/f442.html'
-			})
-			.when('/f/433',{
-				templateUrl : './partials/formations/f433.html'
+			.when('/about/:username',{
+				templateUrl : './partials/about.html'
 			})
 			.otherwise({
 				redirectTo: '/'

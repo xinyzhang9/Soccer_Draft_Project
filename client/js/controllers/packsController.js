@@ -1,6 +1,5 @@
 myApp.controller('packsController',function($scope,$routeParams,packFactory,playerFactory,draftFactory){
 			$scope.username = $routeParams.username;
-			console.log($scope.username);
 			$scope.players = [];
 			$scope.captains = [];
 			$scope.gks = [];
@@ -77,7 +76,30 @@ myApp.controller('packsController',function($scope,$routeParams,packFactory,play
 					$scope.messages = "draft deleted from database successfully!"
 
 				})
-			}
+			};
+
+	$(document).ready(function(){
+		$( document ).on( 'click',".chooseButton",function() {
+			$('#pack_player').fadeOut("slow");
+		});
+		$('#getGoldPlayer').click(function(){
+			$('#pack_player').fadeIn("slow");
+		});
+		$( document ).on( 'click',".chooseCapButton",function() {
+			$('.chooseCapButton').prop("disabled",true);
+			$('#captain').fadeOut("slow");
+		});
+		$('#getCaptain').click(function(){
+			$('#getCaptain').fadeOut("slow");
+		})
+		$( document ).on( 'click',".chooseGKButton",function() {
+			$('.chooseGKButton').prop("disabled",true);
+			$('#goalkeeper').fadeOut("slow");
+		});
+		$('#getGK').click(function(){
+			$('#goalkeeper').fadeIn("slow");
+		});
+	})
 
 
 
