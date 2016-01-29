@@ -235,14 +235,26 @@ myApp.controller('draftController',function($scope,$routeParams,draftFactory,pla
         })
 
         $('#validator').click(function(){
-          if((attacker_counter + midfielder_counter + defender_counter + goalkeeper_counter == 11) && (goalkeeper_counter == 1)){
-            var str = "";
-            //reset
+        	//update
+           attacker_counter = $('.attacker').length;
+           midfielder_counter = $('.midfielder').length;
+           defender_counter = $('.defender').length;
+           goalkeeper_counter = $('.goalkeeper').length;
+
+        	//reset
             $scope.attackers_on = [];
 			$scope.midfielders_on = [];
 			$scope.defenders_on = [];
 			$scope.gks_on = [];
-			           
+			console.log(attacker_counter);
+			console.log(midfielder_counter);
+			console.log(defender_counter);
+			console.log(goalkeeper_counter);
+
+          if((attacker_counter + midfielder_counter + defender_counter + goalkeeper_counter == 11) && (goalkeeper_counter == 1)){
+            var str = "";
+            
+
             str+=defender_counter.toString();
             str+=midfielder_counter.toString();
             str+=attacker_counter.toString();
