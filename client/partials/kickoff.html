@@ -16,6 +16,7 @@
 			vertical-align: top;
 			display: inline-block;
 			text-align: center;
+			width: 40%;
 		}
 		#AITeamList{
 			float: right;
@@ -24,11 +25,28 @@
 			vertical-align: top;
 			display: inline-block;
 			text-align: center;
+			width: 40%;
 		}
 		#controlPanel{
 			display: inline-block;
 			vertical-align: top;
 			margin: 10px;
+			width: 15%;
+			text-align: center;
+		}
+		#game{
+			display: block;
+			border: 2px solid green;
+			width: 80%;
+			height: 600px;
+			clear: both;
+			text-align: center;
+			background-image: url('partials/img/game_bg.jpg');
+			background-image: no-repeat;
+			margin: 0 auto;
+		}
+		#team_list{
+			display: block;
 		}
 
 	</style>
@@ -412,8 +430,15 @@
 		</div>	
 	
 	</div>
+	<div class = 'wrapper'>
+		<div id = 'game'>
+			<h4>Game Simulation</h4>
+			<div>scores</div>
+			<div>logs</div>
+		</div>
 
-
+	</div>
+	
 
 
 </div>
