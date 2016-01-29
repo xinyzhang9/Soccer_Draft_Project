@@ -1,0 +1,135 @@
+<head>
+    <style>
+        div.skills{
+            width: 180px;
+            padding: 10px;
+            display: inline-block;
+            vertical-align: top;
+        }
+        div.info{
+            width: 450px;
+            padding: 10px;
+            display: inline-block;
+            vertical-align: top;
+        }
+        div.head{
+            width: 200px;
+            padding: 10px;
+            display: inline-block;
+            vertical-align: top;
+            text-align: center;
+        }
+        #player_profile{
+            width: 1200px;
+            margin: 0 auto;
+        }
+        img.nation{
+            margin: 0 auto;
+            width: 40px;
+            height: 40px;
+        }
+        img.club{
+            margin: 0 auto;
+            width: 40px;
+            height: 40px;
+        }
+        td.green{
+            background-color: green
+
+        }
+        span.white{
+            color: white;
+        }
+
+    </style>
+</head>
+    <div id="player_profile" ng-controller = 'gkProfileController'>
+    <fieldset>
+            <legend>Player Profile</legend>
+            <div class = "head">
+                <img src="{{gk.img_player}}" alt="gk">
+                <h4>{{gk.alias}}</h4>
+                <img class = "nation" src="{{gk.img_nation}}" alt="nation">
+                <img class = "club" src="{{gk.img_club}}" alt="club">
+            </div>
+            <div class = "info">
+                <table class = 'table'>
+                    <tr>
+                        <td>Full Name</td>
+                        <td ng-bind = 'gk.name'></td>
+                    </tr>
+                    <tr>
+                        <td>Age</td>
+                        <td ng-bind = 'gk.age'></td>
+                    </tr>
+                    <tr>
+                        <td>Height</td>
+                        <td ng-bind = 'gk.height'></td>
+                    </tr>
+                    <tr>
+                        <td>Position</td>
+                        <td ng-bind = 'gk.position'></td>
+                    </tr>
+                    <tr>
+                        <td>Rating</td>
+                        <td ng-bind = 'gk.rating'></td>
+                    </tr>
+                    <tr>
+                        <td>Nation</td>
+                        <td ng-bind = 'gk.nation'></td>
+                    </tr>
+                    
+                </table>
+            </div>
+            <div class = "info">
+                <table class = 'table'>
+                    <tr>
+                        <td>Club</td>
+                        <td ng-bind = 'gk.club'></td>
+                    </tr>
+                    <tr>
+                        <td>League</td>
+                        <td ng-bind = 'gk.league'></td>
+                    </tr>
+                    
+                    <tr>
+                        <td>Work Rates</td>
+                        <td ng-bind = 'gk.workrates'></td>
+                    </tr>
+                    <tr>
+                        <td>Traits</td>
+                        <td ng-bind = 'gk.traits'></td>
+                    </tr>
+                    <tr>
+                        <td>Specialities</td>
+                        <td ng-bind = 'gk.specialities'></td>
+                    </tr>
+            
+                </table>
+            </div>
+            
+            <div>
+                <table class = 'table'>
+                    <tr>
+                        <th>Dive</th>
+                        <th>Hand</th>
+                        <th>Kick</th>
+                        <th>Reflex</th>
+                        <th>Speed</th>
+                        <th>Position</th>
+                    </tr>
+                    <tr>
+                        <td ng-bind = 'gk.dive'></td>
+                        <td ng-bind = 'gk.hand'></td>
+                        <td ng-bind = 'gk.kick'></td>
+                        <td ng-bind = 'gk.reflex'></td>
+                        <td ng-bind = 'gk.speed'></td>
+                        <td ng-bind = 'gk.pos'></td>
+                    </tr>
+                </table>
+            </div>
+      
+  
+    </fieldset> 		
+
+    </div>

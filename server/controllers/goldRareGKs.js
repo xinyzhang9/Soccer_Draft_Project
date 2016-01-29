@@ -1,5 +1,6 @@
 var mongoose = require('mongoose');
 var GoldRareGKs = mongoose.model('gold_rare_gks');
+var GoldRarePlayers = mongoose.model('gold_rare_players');
 
 module.exports = (function(){
 	return{
@@ -42,13 +43,31 @@ module.exports = (function(){
 		},
 		getPlayerbyId:function(req,res){
 			var playerId = req.params.id;
-			GoldRareGKs.findOne({id:playerId},function(err,output){
+			GoldRareGKs.findOne({_id:playerId},function(err,output){
 				if(err){
 					console.log(err);
 				}else{
 					res.json(output);
 				}
 			})
+		},
+		getPlayersArray:function(req,res){
+			var arr = req.body.arr;
+			var results = [];
+			for(var x in arr){
+				var id = arr[x];
+				GoldRareGKs.findOne({_id:id},function(err,player){
+					if(err){
+						console.log(err);
+					}else{
+						results.push(player);
+						if(results.length === arr.length){
+							res.json(results);
+						}
+					}
+				})
+			}
+			
 		},
 
 	

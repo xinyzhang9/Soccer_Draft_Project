@@ -1,0 +1,398 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>manage team</title>
+
+  <script src = '../library/jquery-2.2.0.min.js'></script>
+  <script src = '../library/jquery_ui/jquery-ui.js'></script>
+
+  <style>
+body { 
+    margin: 0;
+}
+#launchPad {
+    float:left;
+    width: 600px;
+    vertical-align: top;
+}
+#dropZone {
+    float: left;
+    height: auto;
+    vertical-align: top;
+}
+.card,.gkcard { 
+    width: 150px; 
+    padding: 5px 10px;
+    margin:20px 5px 0px 5px;
+    border:1px solid #ccc;
+    background-color: #eaeaea;
+    border-radius: 10px;
+    text-align: center;
+    display: inline-block;
+    vertical-align: top;
+    cursor:move;
+}
+.stack {
+    width: 700px;
+    border: 1px solid #ccc;
+    background-image: url("partials/img/pitch.jpg");
+    margin: 20px;
+}
+.stackHdr {
+    background-color: #eaeaea;
+    border: 1px solid #fff;
+    padding: 5px 
+}
+.stackDrop1,.stackDrop2,.stackDrop3{
+    min-height:180px;
+    padding: 15px;
+}
+.stackDrop_gk{
+    min-height:180px;
+    padding: 15px;
+}
+
+.player_img{
+  height: 70px;
+  display: inline-block;
+}
+li{
+  display: inline-block;
+}
+.blue{
+  color: blue;
+  font-weight: bold;
+}
+.red{
+  color:red;
+  font-weight: bold;
+}
+#count{
+  margin-left: 20px;
+}
+  </style>
+</head>
+<body>
+<div id = 'pitch' ng-controller = 'draftController'>
+  <h4>{{username}}'s team bench <button ng-click = 'removeTeam()' class = 'btn btn-danger'>Delete Team</button></h4>
+  <h4 ng-bind='message'></h4>
+<div id="launchPad">    
+  <div class="card" id = '{{players[0]._id}}'>
+      <div>
+        <img class = 'player_img' src="{{players[0].img_player}}" alt="">
+      </div>
+      <div>
+        <strong>{{players[0].alias}}</strong>
+      </div>
+      <div>
+        <span class = 'blue'>{{players[0].position}}</span>
+      </div>
+      <div>
+        <span class = 'red'>{{players[0].rating}}</span>
+      </div>
+    </div> 
+
+<div class="card" id = '{{players[1]._id}}'>
+      <div>
+        <img class = 'player_img' src="{{players[1].img_player}}" alt="">
+      </div>
+      <div>
+        <strong>{{players[1].alias}}</strong>
+      </div>
+      <div>
+        <span class = 'blue'>{{players[1].position}}</span>
+      </div>
+      <div>
+        <span class = 'red'>{{players[1].rating}}</span>
+      </div>
+    </div> 
+
+<div class="card" id = '{{players[2]._id}}'>
+      <div>
+        <img class = 'player_img' src="{{players[2].img_player}}" alt="">
+      </div>
+      <div>
+        <strong>{{players[2].alias}}</strong>
+      </div>
+      <div>
+        <span class = 'blue'>{{players[2].position}}</span>
+      </div>
+      <div>
+        <span class = 'red'>{{players[2].rating}}</span>
+      </div>
+    </div> 
+
+<div class="card" id = '{{players[3]._id}}'>
+      <div>
+        <img class = 'player_img' src="{{players[3].img_player}}" alt="">
+      </div>
+      <div>
+        <strong>{{players[3].alias}}</strong>
+      </div>
+      <div>
+        <span class = 'blue'>{{players[3].position}}</span>
+      </div>
+      <div>
+        <span class = 'red'>{{players[3].rating}}</span>
+      </div>
+    </div> 
+
+<div class="card" id = '{{players[4]._id}}'>
+      <div>
+        <img class = 'player_img' src="{{players[4].img_player}}" alt="">
+      </div>
+      <div>
+        <strong>{{players[4].alias}}</strong>
+      </div>
+      <div>
+        <span class = 'blue'>{{players[4].position}}</span>
+      </div>
+      <div>
+        <span class = 'red'>{{players[4].rating}}</span>
+      </div>
+    </div> 
+
+<div class="card" id = '{{players[5]._id}}'>
+      <div>
+        <img class = 'player_img' src="{{players[5].img_player}}" alt="">
+      </div>
+      <div>
+        <strong>{{players[5].alias}}</strong>
+      </div>
+      <div>
+        <span class = 'blue'>{{players[5].position}}</span>
+      </div>
+      <div>
+        <span class = 'red'>{{players[5].rating}}</span>
+      </div>
+    </div> 
+ 
+ <div class="card" id = '{{players[6]._id}}'>
+      <div>
+        <img class = 'player_img' src="{{players[6].img_player}}" alt="">
+      </div>
+      <div>
+        <strong>{{players[6].alias}}</strong>
+      </div>
+      <div>
+        <span class = 'blue'>{{players[6].position}}</span>
+      </div>
+      <div>
+        <span class = 'red'>{{players[6].rating}}</span>
+      </div>
+    </div> 
+
+<div class="card" id = '{{players[7]._id}}'>
+      <div>
+        <img class = 'player_img' src="{{players[7].img_player}}" alt="">
+      </div>
+      <div>
+        <strong>{{players[7].alias}}</strong>
+      </div>
+      <div>
+        <span class = 'blue'>{{players[7].position}}</span>
+      </div>
+      <div>
+        <span class = 'red'>{{players[7].rating}}</span>
+      </div>
+    </div> 
+
+<div class="card" id = '{{players[8]._id}}'>
+      <div>
+        <img class = 'player_img' src="{{players[8].img_player}}" alt="">
+      </div>
+      <div>
+        <strong>{{players[8].alias}}</strong>
+      </div>
+      <div>
+        <span class = 'blue'>{{players[8].position}}</span>
+      </div>
+      <div>
+        <span class = 'red'>{{players[8].rating}}</span>
+      </div>
+    </div> 
+
+<div class="card" id = '{{players[9]._id}}'>
+      <div>
+        <img class = 'player_img' src="{{players[9].img_player}}" alt="">
+      </div>
+      <div>
+        <strong>{{players[9].alias}}</strong>
+      </div>
+      <div>
+        <span class = 'blue'>{{players[9].position}}</span>
+      </div>
+      <div>
+        <span class = 'red'>{{players[9].rating}}</span>
+      </div>
+    </div> 
+
+<div class="card" id = '{{players[10]._id}}'>
+      <div>
+        <img class = 'player_img' src="{{players[10].img_player}}" alt="">
+      </div>
+      <div>
+        <strong>{{players[10].alias}}</strong>
+      </div>
+      <div>
+        <span class = 'blue'>{{players[10].position}}</span>
+      </div>
+      <div>
+        <span class = 'red'>{{players[10].rating}}</span>
+      </div>
+    </div>
+
+<div class="card" id = '{{players[11]._id}}'>
+      <div>
+        <img class = 'player_img' src="{{players[11].img_player}}" alt="">
+      </div>
+      <div>
+        <strong>{{players[11].alias}}</strong>
+      </div>
+      <div>
+        <span class = 'blue'>{{players[11].position}}</span>
+      </div>
+      <div>
+        <span class = 'red'>{{players[11].rating}}</span>
+      </div>
+    </div>
+
+<div class="card" id = '{{players[12]._id}}'>
+      <div>
+        <img class = 'player_img' src="{{players[12].img_player}}" alt="">
+      </div>
+      <div>
+        <strong>{{players[12].alias}}</strong>
+      </div>
+      <div>
+        <span class = 'blue'>{{players[12].position}}</span>
+      </div>
+      <div>
+        <span class = 'red'>{{players[12].rating}}</span>
+      </div>
+    </div> 
+
+<div class="card" id = '{{players[13]._id}}'>
+      <div>
+        <img class = 'player_img' src="{{players[13].img_player}}" alt="">
+      </div>
+      <div>
+        <strong>{{players[13].alias}}</strong>
+      </div>
+      <div>
+        <span class = 'blue'>{{players[13].position}}</span>
+      </div>
+      <div>
+        <span class = 'red'>{{players[13].rating}}</span>
+      </div>
+    </div> 
+
+<div class="card" id = '{{players[14]._id}}'>
+      <div>
+        <img class = 'player_img' src="{{players[14].img_player}}" alt="">
+      </div>
+      <div>
+        <strong>{{players[14].alias}}</strong>
+      </div>
+      <div>
+        <span class = 'blue'>{{players[14].position}}</span>
+      </div>
+      <div>
+        <span class = 'red'>{{players[14].rating}}</span>
+      </div>
+    </div> 
+
+<div class="card" id = '{{players[15]._id}}'>
+      <div>
+        <img class = 'player_img' src="{{players[15].img_player}}" alt="">
+      </div>
+      <div>
+        <strong>{{players[15].alias}}</strong>
+      </div>
+      <div>
+        <span class = 'blue'>{{players[15].position}}</span>
+      </div>
+      <div>
+        <span class = 'red'>{{players[15].rating}}</span>
+      </div>
+    </div>
+
+<div class="gkcard" id = '{{players[16]._id}}'>
+      <div>
+        <img class = 'player_img' src="{{players[16].img_player}}" alt="">
+      </div>
+      <div>
+        <strong>{{players[16].alias}}</strong>
+      </div>
+      <div>
+        <span class = 'blue'>{{players[16].position}}</span>
+      </div>
+      <div>
+        <span class = 'red'>{{players[16].rating}}</span>
+      </div>
+    </div>
+
+<div class="gkcard" id = '{{players[17]._id}}'>
+      <div>
+        <img class = 'player_img' src="{{players[17].img_player}}" alt="">
+      </div>
+      <div>
+        <strong>{{players[17].alias}}</strong>
+      </div>
+      <div>
+        <span class = 'blue'>{{players[17].position}}</span>
+      </div>
+      <div>
+        <span class = 'red'>{{players[17].rating}}</span>
+      </div>
+    </div> 
+
+
+  </div>
+
+  <div id="dropZone">
+    <button id = 'count' class = 'btn btn-info'>Count players on squad</button>
+    <button id = 'validator' class = 'btn btn-primary'>Validate squad</button>
+    <button id = 'saveFormation' class = 'btn btn-success' ng-click = 'saveFormation()'>Save formation</button>
+      <div class="stack">
+          <div class="stackHdr">
+              forwards
+          </div>
+          <div class="stackDrop1">
+              
+          </div>
+      </div>
+      
+      <div class="stack">
+          <div class="stackHdr">
+              midfielders
+          </div>
+          <div class="stackDrop2">
+              
+          </div>
+      </div>
+      <div class="stack">
+          <div class="stackHdr">
+              defenders
+          </div>
+          <div class="stackDrop3">
+              
+          </div>
+      </div>
+      <div class="stack">
+          <div class="stackHdr">
+              goalkeeper
+          </div>
+          <div class="stackDrop_gk">
+              
+          </div>
+      </div>
+  </div>
+</div>
+
+
+ 
+ 
+</body>
+</html>

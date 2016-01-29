@@ -1,6 +1,7 @@
 //require controllers
 var goldRarePlayers = require('./../controllers/goldRarePlayers.js');
 var goldRareGKs = require('./../controllers/goldRareGKs.js');
+var drafts = require('./../controllers/drafts.js');
 
 module.exports = function(app){
 	//root
@@ -47,17 +48,29 @@ module.exports = function(app){
 		goldRareGKs.getPlayerbyId(req,res);
 	});
 
-	
+	//draft
+	app.get('/getDraftByUser/:username',function(req,res){
+		drafts.getDraftByUser(req,res);
+	});
 
+	app.post('/addDraft',function(req,res){
+		drafts.addDraft(req,res);
+	});
 
+	app.post('/removeDraftByUser/:username',function(req,res){
+		drafts.removeDraftByUser(req,res);
+	});
 
+	app.post('/updateFormation',function(req,res){
+		drafts.updateFormation(req,res);
+	});
 
-	
-
-
-
-	app.get('/getGoldRareGK',function(req,res){
-		goldRareGKs.getPlayer(req,res);
+	//request by array
+	app.post('/getPlayersArray',function(req,res){
+		goldRarePlayers.getPlayersArray(req,res);
+	});
+	app.post('/getGKsArray',function(req,res){
+		goldRareGKs.getPlayersArray(req,res);
 	});
 
 }

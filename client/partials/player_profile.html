@@ -1,0 +1,270 @@
+<head>
+    <style>
+        div.skills{
+            width: 180px;
+            padding: 10px;
+            display: inline-block;
+            vertical-align: top;
+        }
+        div.info{
+            width: 450px;
+            padding: 10px;
+            display: inline-block;
+            vertical-align: top;
+        }
+        div.head{
+            width: 200px;
+            padding: 10px;
+            display: inline-block;
+            vertical-align: top;
+            text-align: center;
+        }
+        #player_profile{
+            width: 1200px;
+            margin: 0 auto;
+        }
+        img.nation{
+            margin: 0 auto;
+            width: 40px;
+            height: 40px;
+        }
+        img.club{
+            margin: 0 auto;
+            width: 40px;
+            height: 40px;
+        }
+        td.green{
+            background-color: green
+
+        }
+        span.white{
+            color: white;
+        }
+
+    </style>
+</head>
+    <div id="player_profile" ng-controller = 'playerProfileController'>
+        <h3>Player Profile</h3>
+            <div class = "head">
+                <img src="{{player.img_player}}" alt="player">
+                <h4>{{player.alias}}</h4>
+                <img class = "nation" src="{{player.img_nation}}" alt="nation">
+                <img class = "club" src="{{player.img_club}}" alt="club">
+            </div>
+            <div class = "info">
+                <table class = 'table'>
+                    <tr>
+                        <td>Full Name</td>
+                        <td ng-bind = 'player.name'></td>
+                    </tr>
+                    <tr>
+                        <td>Age</td>
+                        <td ng-bind = 'player.age'></td>
+                    </tr>
+                    <tr>
+                        <td>Height</td>
+                        <td ng-bind = 'player.height'></td>
+                    </tr>
+                    <tr>
+                        <td>Position</td>
+                        <td ng-bind = 'player.position'></td>
+                    </tr>
+                    <tr>
+                        <td>Rating</td>
+                        <td ng-bind = 'player.rating'></td>
+                    </tr>
+                    <tr>
+                        <td>Nation</td>
+                        <td ng-bind = 'player.nation'></td>
+                    </tr>
+                    
+                </table>
+            </div>
+            <div class = "info">
+                <table class = 'table'>
+                    <tr>
+                        <td>Club</td>
+                        <td ng-bind = 'player.club'></td>
+                    </tr>
+                    <tr>
+                        <td>League</td>
+                        <td ng-bind = 'player.league'></td>
+                    </tr>
+                    
+                    <tr>
+                        <td>Work Rates</td>
+                        <td ng-bind = 'player.workrates'></td>
+                    </tr>
+                    <tr>
+                        <td>Traits</td>
+                        <td ng-bind = 'player.traits'></td>
+                    </tr>
+                    <tr>
+                        <td>Specialities</td>
+                        <td ng-bind = 'player.specialities'></td>
+                    </tr>
+            
+                </table>
+            </div>
+            
+            <div class = 'skills'>
+                <table class = 'table'>
+                    <tr>
+                        <td class = 'green'><span class = 'white'>Pace</span></td>
+                        <td class = 'green'><span class = 'white' ng-bind = 'player.pace'></span></td>
+                    </tr>
+                    <tr>
+                        <td>Acceleration</td>
+                        <td ng-bind = 'player.acceleration'></td>
+                    </tr>
+                    <tr>
+                        <td>Sprint Speed</td>
+                        <td ng-bind = 'player.sprint_speed'></td>
+                    </tr>
+                </table>
+            </div>
+            <div class = 'skills'>
+                <table class = 'table'>
+                    <tr>
+                        <td class = 'green'><span class = 'white'>Dribbling</span></td>
+                        <td class = 'green'><span class = 'white' ng-bind = 'player.dribbling'></span></td>
+                    </tr>
+                    <tr>
+                        <td>Agility</td>
+                        <td ng-bind = 'player.agility'></td>
+                    </tr>
+                    <tr>
+                        <td>Balance</td>
+                        <td ng-bind = 'player.balance'></td>
+                    </tr>
+                    <tr>
+                        <td>Reactions</td>
+                        <td ng-bind = 'player.reactions'></td>
+                    </tr>
+                    <tr>
+                        <td>Ball Control</td>
+                        <td ng-bind = 'player.ball_control'></td>
+                    </tr>
+                    <tr>
+                        <td>Dribble Skills</td>
+                        <td ng-bind = 'player.dribbling_skill'></td>
+                    </tr>
+                </table>
+            </div>
+            <div class = 'skills'>
+                <table class = 'table'>
+                    <tr>
+                        <td class = 'green'><span class = 'white'>Shooting</span></td>
+                        <td class = 'green'><span class = 'white' ng-bind = 'player.shooting'></span></td>
+                    </tr>
+                    <tr>
+                        <td>Positioning</td>
+                        <td ng-bind = 'player.positioning'></td>
+                    </tr>
+                    <tr>
+                        <td>Finishing</td>
+                        <td ng-bind = 'player.finishing'></td>
+                    </tr>
+                    <tr>
+                        <td>Shot Power</td>
+                        <td ng-bind = 'player.shot_power'></td>
+                    </tr>
+                    <tr>
+                        <td>Long Shots</td>
+                        <td ng-bind = 'player.long_shots'></td>
+                    </tr>
+                    <tr>
+                        <td>Volleys</td>
+                        <td ng-bind = 'player.volleys'></td>
+                    </tr>
+                    <tr>
+                        <td>Penalties</td>
+                        <td ng-bind = 'player.penalties'></td>
+                    </tr>
+                </table>
+            </div>
+            <div class = 'skills'>
+                <table class = 'table'>
+                    <tr>
+                        <td class = 'green'><span class = 'white'>Defending</span></td>
+                        <td class = 'green'><span class = 'white' ng-bind = 'player.defending'></span></td>
+                    </tr>
+                    <tr>
+                        <td>Interceptions</td>
+                        <td ng-bind = 'player.interceptions'></td>
+                    </tr>
+                    <tr>
+                        <td>Heading</td>
+                        <td ng-bind = 'player.heading'></td>
+                    </tr>
+                    <tr>
+                        <td>Marking</td>
+                        <td ng-bind = 'player.marking'></td>
+                    </tr>
+                    <tr>
+                        <td>Standing Tackle</td>
+                        <td ng-bind = 'player.standing_tackle'></td>
+                    </tr>
+                    <tr>
+                        <td>Sliding Tackle</td>
+                        <td ng-bind = 'player.sliding_tackle'></td>
+                    </tr>
+                </table>
+            </div>
+            <div class = 'skills'>
+                <table class = 'table'>
+                    <tr>
+                        <td class = 'green'><span class = 'white'>Passing</span></td>
+                        <td class = 'green'><span class = 'white' ng-bind = 'player.passing'></span></td>
+                    </tr>
+                    <tr>
+                        <td>Vision</td>
+                        <td ng-bind = 'player.vision'></td>
+                    </tr>
+                    <tr>
+                        <td>Crossing</td>
+                        <td ng-bind = 'player.crossing'></td>
+                    </tr>
+                    <tr>
+                        <td>Free Kick</td>
+                        <td ng-bind = 'player.free_kick'></td>
+                    </tr>
+                    <tr>
+                        <td>Short Passing</td>
+                        <td ng-bind = 'player.short_passing'></td>
+                    </tr>
+                    <tr>
+                        <td>Long Passing</td>
+                        <td ng-bind = 'player.long_passing'></td>
+                    </tr>
+                    <tr>
+                        <td>Curve</td>
+                        <td ng-bind = 'player.curve'></td>
+                    </tr>
+                </table>
+            </div>
+            <div class = 'skills'>
+                <table class = 'table'>
+                    <tr>
+                        <td class = 'green'><span class = 'white'>Physical</span></td>
+                        <td class = 'green'><span class = 'white' ng-bind = 'player.physical'></span></td>
+                    </tr>
+                    <tr>
+                        <td>Jumping</td>
+                        <td ng-bind = 'player.jumping'></td>
+                    </tr>
+                    <tr>
+                        <td>Stamina</td>
+                        <td ng-bind = 'player.stamina'></td>
+                    </tr>
+                    <tr>
+                        <td>Strength</td>
+                        <td ng-bind = 'player.strength'></td>
+                    </tr>
+                    <tr>
+                        <td>Aggression</td>
+                        <td ng-bind = 'player.aggression'></td>
+                    </tr>
+                </table>
+            </div>
+    </div>

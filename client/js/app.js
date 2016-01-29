@@ -12,14 +12,17 @@ var myApp = angular.module('myApp',['ngRoute']);
 			.when('/list/:username',{
 				templateUrl : './partials/draft_team_list.html',
 			})
-			.when('/newDraft/:username',{
-				templateUrl : './partials/newDraft.html',
+			.when('/manageTeam/:username',{
+				templateUrl : './partials/manage_team.html',
 			})
 			.when('/team_profile/:username',{
 				templateUrl : './partials/team_profile.html'
 			})
 			.when('/player_profile/:id',{
 				templateUrl : './partials/player_profile.html'
+			})
+			.when('/gk_profile/:id',{
+				templateUrl : './partials/gk_profile.html'
 			})
 			.when('/teamSummary/:username',{
 				templateUrl : './partials/teamSummary.html'

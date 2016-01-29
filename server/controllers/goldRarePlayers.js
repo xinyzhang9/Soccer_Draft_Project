@@ -62,13 +62,31 @@ module.exports = (function(){
 		},
 		getPlayerbyId:function(req,res){
 			var playerId = req.params.id;
-			GoldRarePlayers.findOne({id:playerId},function(err,output){
+			GoldRarePlayers.findOne({_id:playerId},function(err,output){
 				if(err){
 					console.log(err);
 				}else{
 					res.json(output);
 				}
 			})
+		},
+
+		getPlayersArray:function(req,res){
+			var arr = req.body.arr;
+			var results = [];
+			for(var x in arr){
+				var id = arr[x];
+				GoldRarePlayers.findOne({_id:id},function(err,player){
+					if(err){
+						console.log(err);
+					}else{
+						results.push(player);
+						if(results.length === arr.length){
+							res.json(results);
+						}
+					}
+				})
+			 }
 		},
 
 	
