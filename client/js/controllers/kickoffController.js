@@ -69,9 +69,9 @@ myApp.controller('kickoffController',function($scope,$routeParams,playerFactory,
 
 			$scope.getAITeam = function(){
 				if($scope.AI_name == 'Arsenal'){
-					var attackers_id = ["56a7e53a1c2d5ed1dd65038e","56a7e53a1c2d5ed1dd650353"];
-					var midfielders_id = ["56a7e53a1c2d5ed1dd6502a7","56a7e53a1c2d5ed1dd650380","56a7e53a1c2d5ed1dd650397","56a7e53a1c2d5ed1dd650484"];
-					var defenders_id = ["56a7e53a1c2d5ed1dd6503a4","56a7e53a1c2d5ed1dd6502b6","56a7e53a1c2d5ed1dd650306","56a7e53a1c2d5ed1dd6503fb"];
+					var attackers_id = ["56e67755d259301e672e8d32","56e67755d259301e672e8cd8"];
+					var midfielders_id = ["56e67755d259301e672e8d43","56e67755d259301e672e8ce3","56e67755d259301e672e8c63","56e67755d259301e672e8c15"];
+					var defenders_id = ["56e67755d259301e672e8c84","56e67755d259301e672e8d0a","56e67755d259301e672e8d01","56e67755d259301e672e8c82"];
 					var gks_id = ["56a7e5811c2d5ed1dd6504eb"];
 					$scope.AIFormation = "442";
 
@@ -103,9 +103,9 @@ myApp.controller('kickoffController',function($scope,$routeParams,playerFactory,
 						})
 					});
 				}else if($scope.AI_name == 'Real_Madrid'){
-					var attackers_id = ["56a7e53a1c2d5ed1dd6503a2","56a7e53a1c2d5ed1dd650396","56a7e53a1c2d5ed1dd65030a"];
-					var midfielders_id = ["56a7e53a1c2d5ed1dd65039a","56a7e53a1c2d5ed1dd650399","56a7e53a1c2d5ed1dd6502d1"];
-					var defenders_id = ["56a7e53a1c2d5ed1dd6502b2","56a7e53a1c2d5ed1dd650392","56a7e53a1c2d5ed1dd6503d4","56a7e53a1c2d5ed1dd650412"];
+					var attackers_id = ["56e67755d259301e672e8d5c","56e67755d259301e672e8d44","56e67755d259301e672e8d2b"];
+					var midfielders_id = ["56e67755d259301e672e8d4c","56e67755d259301e672e8d4b","56e67755d259301e672e8d46"];
+					var defenders_id = ["56e67755d259301e672e8d41","56e67755d259301e672e8d12","56e67755d259301e672e8c36","56e67755d259301e672e8cad"];
 					var gks_id = ["56a7e5811c2d5ed1dd6504d9"];
 					$scope.AIFormation = "433";
 
@@ -137,9 +137,9 @@ myApp.controller('kickoffController',function($scope,$routeParams,playerFactory,
 						})
 					});
 				}else if($scope.AI_name == 'Barcelona'){
-					var attackers_id = ["56a7e53a1c2d5ed1dd65039d","56a7e53a1c2d5ed1dd6503a1","56a7e53a1c2d5ed1dd6503e0"];
-					var midfielders_id = ["56a7e53a1c2d5ed1dd65039c","56a7e53a1c2d5ed1dd6502b8","56a7e53a1c2d5ed1dd650341"];
-					var defenders_id = ["56a7e53a1c2d5ed1dd650426","56a7e53a1c2d5ed1dd6503fc","56a7e53a1c2d5ed1dd6502b7","56a7e53a1c2d5ed1dd650422"];
+					var attackers_id = ["56e67755d259301e672e8d66","56e67755d259301e672e8aa5","56e67755d259301e672e8d4e"];
+					var midfielders_id = ["56e67755d259301e672e8d4a","56e67755d259301e672e8c41","56e67755d259301e672e8d2f"];
+					var defenders_id = ["56e67755d259301e672e8c3d","56e67755d259301e672e8c47","56e67755d259301e672e8d04","56e67755d259301e672e8c5b"];
 					var gks_id = ["56a7e5811c2d5ed1dd6504e4"];
 					$scope.AIFormation = "433";
 
