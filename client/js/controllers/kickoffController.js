@@ -17,6 +17,11 @@ myApp.controller('kickoffController',function($scope,$routeParams,playerFactory,
 			var def_pos = ['LB','LWB','CB','RB','RWB'];
 
 			var getDraftByUser = function(){
+				draftFactory.checkUserDraft($scope.username,function(res){
+		          if(res.result == false){
+		            alert("You have no team yet!")
+		          }
+		        });
 				draftFactory.getDraftByUser($scope.username,function(data){
 					$scope.draft = data;
 					console.log("$scope.draft");

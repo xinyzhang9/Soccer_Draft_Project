@@ -1,5 +1,6 @@
 
 myApp.controller('tournamentsController',function($scope,$routeParams,draftFactory,playerFactory){
+
 	var username = $routeParams.username;
 	var myTeam = "";
 	myTeam+= '&#9829'+username+"\'s draft team&#9829";

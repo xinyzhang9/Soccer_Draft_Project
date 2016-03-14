@@ -12,6 +12,11 @@ myApp.controller('draftController',function($scope,$routeParams,draftFactory,pla
 
 
 			var getDraftByUser = function(){
+        draftFactory.checkUserDraft($scope.username,function(res){
+          if(res.result == false){
+            alert("You have no team yet!")
+          }
+        });
 				draftFactory.getDraftByUser($scope.username,function(data){
 					$scope.draft = data;
 					console.log("$scope.draft");
@@ -284,11 +289,6 @@ myApp.controller('draftController',function($scope,$routeParams,draftFactory,pla
             alert('your squad is not valid!!!');
           }   
         })
-
-       
-        
-
-
 
       });//function
 
