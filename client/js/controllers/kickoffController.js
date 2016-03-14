@@ -10,6 +10,8 @@ myApp.controller('kickoffController',function($scope,$routeParams,playerFactory,
 			$scope.AIdefenders = [];
 			$scope.AIgks = [];
 
+			$scope.gamelogs = "";
+
 
 
 			var att_pos = ["ST","CF","LW","RW","LF","RF"];
@@ -19,7 +21,7 @@ myApp.controller('kickoffController',function($scope,$routeParams,playerFactory,
 			var getDraftByUser = function(){
 				draftFactory.checkUserDraft($scope.username,function(res){
 		          if(res.result == false){
-		            alert("You have no team yet!")
+		            window.location.replace("#/openPacks/"+$scope.username);
 		          }
 		        });
 				draftFactory.getDraftByUser($scope.username,function(data){
@@ -176,9 +178,12 @@ myApp.controller('kickoffController',function($scope,$routeParams,playerFactory,
 						})
 					});
 				}
-					
+						
+			}
 
-				
+			$scope.simulator = function(){
+				$scope.gamelogs += "<p>"+$scope.AIattackers[0].alias +" tries a longshot from 25 yards!" + "</p>";
+				$("#logs").html($scope.gamelogs);
 			}
 
 

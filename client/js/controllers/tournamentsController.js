@@ -5,6 +5,11 @@ myApp.controller('tournamentsController',function($scope,$routeParams,draftFacto
 	var myTeam = "";
 	myTeam+= '&#9829'+username+"\'s draft team&#9829";
 
+	draftFactory.checkUserDraft(username,function(res){
+		if(res.result == false){
+		    window.location.replace("#/openPacks/"+username);
+		}
+	});
 
 	$(document).on('ready', function() {
 				

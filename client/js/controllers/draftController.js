@@ -14,7 +14,7 @@ myApp.controller('draftController',function($scope,$routeParams,draftFactory,pla
 			var getDraftByUser = function(){
         draftFactory.checkUserDraft($scope.username,function(res){
           if(res.result == false){
-            alert("You have no team yet!")
+            window.location.replace("#/openPacks/"+$scope.username);
           }
         });
 				draftFactory.getDraftByUser($scope.username,function(data){
