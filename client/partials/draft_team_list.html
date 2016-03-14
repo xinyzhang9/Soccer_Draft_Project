@@ -43,6 +43,7 @@
 			<ul>
 				<h4>Attackers</h4>
 					<li ng-repeat = "attacker in attackers | orderBy: '-rating' ">
+						<a href="#/player_profile/{{attacker._id}}">
 						<div class="playercard card-small fut16 gold  nif" style="z-index: 20;" ng-controller:'playerCardsController'> 		
 								<div class="playercard-art"></div> 		
 							<div class="playercard-rating"><span class="value">{{attacker.rating}}</span></div> 		
@@ -76,7 +77,7 @@
 							</div>
 							<div class="playercard-chem">CHE: <span class="value">0</span></div>
 						</div>
-						<a href="#/player_profile/{{attacker._id}}" class = 'btn btn-info'>Profile</a>
+						</a>
 					</li>
 				</ul>
 		</div>
@@ -85,6 +86,7 @@
 			<ul>
 				<h4>Midfielders</h4>
 					<li ng-repeat = "midfielder in midfielders | orderBy: '-rating'">
+						<a href="#/player_profile/{{midfielder._id}}">
 						<div class="playercard card-small fut16 gold  nif" style="z-index: 20;" ng-controller:'playerCardsController'> 		
 								<div class="playercard-art"></div> 		
 							<div class="playercard-rating"><span class="value">{{midfielder.rating}}</span></div> 		
@@ -118,7 +120,7 @@
 							</div>
 							<div class="playercard-chem">CHE: <span class="value">0</span></div>
 						</div>
-						<a href="#/player_profile/{{midfielder._id}}" class = 'btn btn-info'>Profile</a>
+						</a>
 					</li>
 				</ul>
 		</div>
@@ -127,6 +129,7 @@
 			<ul>
 				<h4>Defenders</h4>
 					<li ng-repeat = "defender in defenders | orderBy: '-rating'">
+						<a href="#/player_profile/{{defender._id}}">
 						<div class="playercard card-small fut16 gold  nif" style="z-index: 20;" ng-controller:'playerCardsController'> 		
 								<div class="playercard-art"></div> 		
 							<div class="playercard-rating"><span class="value">{{defender.rating}}</span></div> 		
@@ -160,7 +163,7 @@
 							</div>
 							<div class="playercard-chem">CHE: <span class="value">0</span></div>
 						</div>
-						<a href="#/player_profile/{{defender._id}}" class = 'btn btn-info'>Profile</a>
+						</a>
 					</li>
 				</ul>
 		</div>
@@ -169,6 +172,7 @@
 				<ul>
 					<h4>Goalkeepers:</h4>
 					<li ng-repeat = "gk in gks | orderBy: '-rating'">
+						<a href="#/gk_profile/{{gk._id}}">
 						<div class="playercard card-small fut16 gold  nif" style="z-index: 20;" ng-controller:'playerCardsController'> 		
 								<div class="playercard-art"></div> 		
 							<div class="playercard-rating"><span class="value">{{gk.rating}}</span></div> 		
@@ -202,7 +206,7 @@
 							</div>
 							<div class="playercard-chem">CHE: <span class="value">0</span></div>
 						</div>
-						<a href="#/gk_profile/{{gk._id}}" class = 'btn btn-info'>Profile</a>
+						</a>
 					</li>
 				</ul>
 		</div>
