@@ -12,17 +12,17 @@ body {
     margin: 0;
 }
 #launchPad {
-    float:left;
-    width: 540px;
+    width: 30%;
     vertical-align: top;
+    display: inline-block;
 }
 #dropZone {
-    float: left;
-    height: auto;
+    width: 70%;
     vertical-align: top;
+    display: inline-block;
 }
 .card,.gkcard { 
-    width: 130px; 
+    width: 120px; 
     padding: 5px 10px;
     margin:20px 5px 0px 5px;
     border:1px solid #ccc;
@@ -34,7 +34,7 @@ body {
     cursor:move;
 }
 .stack {
-    width: 640px;
+    width: 100%;
     border: 1px solid #ccc;
     background-image: url("partials/img/pitch.jpg");
     margin: 20px;
@@ -75,8 +75,16 @@ li{
 </head>
 <body>
 <div id = 'pitch' ng-controller = 'draftController'>
-  <h4>{{username}}'s team bench <button ng-click = 'removeTeam()' class = 'btn btn-danger'>Delete Team</button></h4>
-  <h4 ng-bind='message'></h4>
+  <div>
+      <h4>
+        {{username}}'s team bench <button ng-click = 'removeTeam()' class = 'btn btn-danger'>Delete Team</button>
+        <button id = 'count' class = 'btn btn-info'>Count players on squad</button>
+        <button id = 'validator' class = 'btn btn-primary'>Validate squad</button>
+        <button id = 'saveFormation' class = 'btn btn-success' ng-click = 'saveFormation()'>Save formation</button>
+      </h4>
+      <h4 ng-bind='message'></h4>
+  </div>
+ 
 <div id="launchPad">    
   <div class="card" id = '{{players[0]._id}}'>
       <div>
@@ -352,9 +360,7 @@ li{
   </div>
 
   <div id="dropZone">
-    <button id = 'count' class = 'btn btn-info'>Count players on squad</button>
-    <button id = 'validator' class = 'btn btn-primary'>Validate squad</button>
-    <button id = 'saveFormation' class = 'btn btn-success' ng-click = 'saveFormation()'>Save formation</button>
+    
       <div class="stack">
           <div class="stackHdr">
               forwards

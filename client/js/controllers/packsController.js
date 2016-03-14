@@ -38,6 +38,7 @@ myApp.controller('packsController',function($scope,$routeParams,packFactory,play
 			};
 
 			$scope.addPlayerToTeam = function(player){
+				
 				if($scope.counter>0){
 					var status = 0;
 					for(x in $scope.teamMembers){
@@ -60,12 +61,14 @@ myApp.controller('packsController',function($scope,$routeParams,packFactory,play
 						}else{
 							$scope.num_gk++;
 						}
+						checkGKNumber();
 					}
 
 				}
 				else{
 					$scope.messages = ">>Your Team is full."
 				}
+
 			};
 
 			$scope.saveTeam = function(){
@@ -125,6 +128,18 @@ myApp.controller('packsController',function($scope,$routeParams,packFactory,play
 		})
 	}
 
+	var checkGKNumber = function(){
+		if($scope.num_def+$scope.num_mid+$scope.num_att >=16){
+			$('#getGoldPlayer').prop("disabled",true);
+			$scope.messages = "You must choose 2 goalkeepers!";
+		}
+		if($scope.num_gk >=2){
+			$('#getGK').prop("disabled",true);
+			$scope.messages = "You should only have 2 goalkeepers!";
+		}
+	}
+
+	//check when loading page
 	checkUserDraft();
 
 
