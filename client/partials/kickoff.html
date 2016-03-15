@@ -39,7 +39,7 @@
 			border: 2px solid green;
 			border-radius: 20px;
 			width: 80%;
-			height: 600px;
+			min-height:600px;
 			clear: both;
 			text-align: center;
 			background-image: url('partials/img/game_bg.jpg');
@@ -444,7 +444,8 @@
 		<div id = 'game'>
 			<h4>Game Simulation</h4>
 			<h4><button ng-click = "simulator()">simulate</button></h4>
-			<div>scores</div>
+			<div id = "time">0'0"</div>
+			<div id = "scores">scores</div>
 			<div id =  "logs">logs</div>
 		</div>
 

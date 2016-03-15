@@ -181,10 +181,229 @@ myApp.controller('kickoffController',function($scope,$routeParams,playerFactory,
 						
 			}
 
+			var myScore = 0;
+			var AIScore = 0;
+			var time = 0;
+			var attackList = ["tried a longshot","shot inside the box","dribbled into the box","tried to beat the defend line","lost the ball to opponent"];
+			var midList = ["passed the ball to forwards","launched a though ball","successfully defended the ball","tried a longshot","gave the possession to opponent"];
+			var defendList = ["dives into tackles","blocks the passing successfully","had great advantage in the air","lost the possession"];
+			var gkList = ["made a brilliant save","got the ball right in his hands","had no chance to save that goal"];
+			var start1 = false;
+			var start2 = false;
+			var halfbreak = false;
+			var end = false;
+			var mygkAction = false;
+			var AIgkAction = false;
+			var myAction = true;
+			var AIAction = false;
 			$scope.simulator = function(){
-				$scope.gamelogs += "<p>"+$scope.AIattackers[0].alias +" tries a longshot from 25 yards!" + "</p>";
-				$("#logs").html($scope.gamelogs);
+				$("#scores").html(myScore +" : "+AIScore);
+				if(!end){
+					if(!start1){
+						var str = "<p> Game starts! You are watching friendly match between "+$scope.username+" and " + $scope.AI_name +"</p>";
+						$scope.gamelogs = str.concat($scope.gamelogs);
+						start1 = true;
+					}
+					var randomMin = Math.floor(Math.random()*6+1);
+					var randomSecond = Math.floor(Math.random()*60);
+					time = time + randomMin;
+
+					if(time >45 && !halfbreak){
+						var str = "<p> Referee blows to end the first half. Current score is "+myScore +" : "+AIScore+"</p>";
+						$scope.gamelogs = str.concat($scope.gamelogs);
+						halfbreak = true;
+					}
+					if(time >45 && !start2){
+						var str = "<p> Second Half starts! You are watching friendly match between "+$scope.username+" and " + $scope.AI_name +"</p>";
+						$scope.gamelogs = str.concat($scope.gamelogs);
+						start2 = true;
+					}
+					if(time >=90 && !end){
+						var str = "<p> Referee blowed the final whistle! Final score is "+$scope.username+" "+myScore+" and " + $scope.AI_name +" "+AIScore+"</p>";
+						$scope.gamelogs =  str.concat($scope.gamelogs);
+						end = true;
+						$("#logs").html($scope.gamelogs);
+						$("#time").html("90\'00\"");
+					}else{
+						var currentTime = time +"\'"+randomSecond+"\"";
+						$("#time").html(currentTime);
+						if(myAction){
+							var rand = Math.floor(Math.random()*3);
+							if(rand == 0){
+								var str = "<p>"+currentTime+" "+getMyAttacker() +" "+ getMyAttackerStatus() + "</p>";
+								if(AIgkAction){
+									var str2 = "<p>"+currentTime+" "+getAIGK() +" "+ getAIGKStatus() + "</p>";
+									str = str2.concat(str);
+									$scope.gamelogs = str.concat($scope.gamelogs);
+									AIgkAction = false;
+								}else{
+									$scope.gamelogs = str.concat($scope.gamelogs);
+								}
+								
+
+							}else if(rand == 1){
+								var str = "<p>"+currentTime+" "+getMyMidfielder() +" "+ getMyMidfielderStatus() + "</p>";
+								$scope.gamelogs = str.concat($scope.gamelogs);
+							}else{
+								var str = "<p>"+currentTime+" "+getMyDefender() +" "+ getMyDefenderStatus() + "</p>";
+								$scope.gamelogs = str.concat($scope.gamelogs);
+							}
+						}else if(AIAction){
+							var rand = Math.floor(Math.random()*3);
+							if(rand == 0){
+								var str = "<p>"+currentTime+" "+getAIAttacker() +" "+ getAIAttackerStatus() + "</p>";
+								if(mygkAction){
+									var str2 = "<p>"+currentTime+" "+getMyGK() +" "+ getMyGKStatus() + "</p>";
+									str = str2.concat(str);
+									$scope.gamelogs = str.concat($scope.gamelogs);
+									mygkAction = false;
+								}else{
+									$scope.gamelogs = str.concat($scope.gamelogs);
+								}
+
+							}else if(rand == 1){
+								var str = "<p>"+currentTime+" "+getAIMidfielder() +" "+ getAIMidfielderStatus() + "</p>";
+								$scope.gamelogs = str.concat($scope.gamelogs);
+							}else{
+								var str = "<p>"+currentTime+" "+getAIDefender() +" "+ getAIDefenderStatus() + "</p>";
+								$scope.gamelogs = str.concat($scope.gamelogs);
+							}
+						}
+						
+						
+						$("#logs").html($scope.gamelogs);
+					}
+						
+					
+
+				}
+				
+
 			}
+
+			//get player
+			var getMyAttacker = function(){
+				var len = $scope.attackers.length;
+				var rand = Math.floor(Math.random()*len);
+				return $scope.attackers[rand].alias;
+			}
+			var getAIAttacker = function(){
+				var len = $scope.AIattackers.length;
+				var rand = Math.floor(Math.random()*len);
+				return $scope.AIattackers[rand].alias;
+			}
+
+			var getMyMidfielder = function(){
+				var len = $scope.midfielders.length;
+				var rand = Math.floor(Math.random()*len);
+				return $scope.midfielders[rand].alias;
+			}
+			var getAIMidfielder = function(){
+				var len = $scope.AImidfielders.length;
+				var rand = Math.floor(Math.random()*len);
+				return $scope.AImidfielders[rand].alias;
+			}
+
+			var getMyDefender = function(){
+				var len = $scope.defenders.length;
+				var rand = Math.floor(Math.random()*len);
+				return $scope.defenders[rand].alias;
+			}
+			var getAIDefender = function(){
+				var len = $scope.AIdefenders.length;
+				var rand = Math.floor(Math.random()*len);
+				return $scope.AIdefenders[rand].alias;
+			}
+
+			var getMyGK = function(){
+				return $scope.gks[0].alias;
+			}
+			var getAIGK = function(){
+				return $scope.AIgks[0].alias;
+			}
+
+			//get status
+			var getMyAttackerStatus = function(){
+				var len = attackList.length;
+				var rand = Math.floor(Math.random()*len);
+				if(rand == 4){
+					myAction = false;
+					AIAction = true;
+				}
+				if(rand == 0 || rand == 1){
+					AIgkAction = true;
+				}
+				return attackList[rand];
+			}
+			var getAIAttackerStatus = function(){
+				var len = attackList.length;
+				var rand = Math.floor(Math.random()*len);
+				if(rand == 4){
+					myAction = true;
+					AIAction = false;
+				}
+				if(rand == 0 || rand == 1){
+					mygkAction = true;
+				}
+				return attackList[rand];
+			}
+			var getMyMidfielderStatus = function(){
+				var len = midList.length;
+				var rand = Math.floor(Math.random()*len);
+				if(rand == 4){
+					myAction = false;
+					AIAction = true;
+				}
+				return midList[rand];
+			}
+			var getAIMidfielderStatus = function(){
+				var len = midList.length;
+				var rand = Math.floor(Math.random()*len);
+				if(rand == 4){
+					myAction = true;
+					AIAction = false;
+				}
+				return midList[rand];
+			}
+			var getMyDefenderStatus = function(){
+				var len = defendList.length;
+				var rand = Math.floor(Math.random()*len);
+				if(rand == 4){
+					myAction = false;
+					AIAction = true;
+				}
+				return defendList[rand];
+			}
+			var getAIDefenderStatus = function(){
+				var len = defendList.length;
+				var rand = Math.floor(Math.random()*len);
+				if(rand == 4){
+					myAction = true;
+					AIAction = false;
+				}
+				return defendList[rand];
+			}
+			var getMyGKStatus = function(){
+				var len = gkList.length;
+				var rand = Math.floor(Math.random()*len);
+				if(rand == 2){
+					AIScore += 1;
+					myAction = true;
+					AIAction = false;
+				}
+				return gkList[rand];
+			}
+			var getAIGKStatus = function(){
+				var len = gkList.length;
+				var rand = Math.floor(Math.random()*len);
+				if(rand == 2){
+					myScore += 1;
+					myAction = false;
+					AIAction = true;
+				}
+				return gkList[rand];
+			}
+
 
 
 
