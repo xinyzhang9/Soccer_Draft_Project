@@ -9,6 +9,9 @@
 		.red{
 			color: red;
 		}
+		.white{
+			color: white;
+		}
 		#myTeamList{
 			float:left;
 			border: 2px solid orange;
@@ -17,6 +20,8 @@
 			display: inline-block;
 			text-align: center;
 			width: 44%;
+			background-image: url('partials/img/pitch.jpg');
+
 		}
 		#AITeamList{
 			float: right;
@@ -26,6 +31,8 @@
 			display: inline-block;
 			text-align: center;
 			width: 44%;
+			background-image: url('partials/img/pitch.jpg');
+
 		}
 		#controlPanel{
 			display: inline-block;
@@ -38,7 +45,7 @@
 			display: block;
 			border: 2px solid green;
 			border-radius: 20px;
-			width: 80%;
+			width: 90%;
 			min-height:600px;
 			clear: both;
 			text-align: center;
@@ -54,8 +61,18 @@
 			font-size: 16px;
 			font-weight: bolder;
 		}
-		#time{
-
+		th{
+			color: white;
+			text-align: center;
+		}
+		td{
+			color: white;
+		}
+		h5{
+			color: white;
+		}
+		table{
+			text-align: center;
 		}
 
 	</style>
@@ -64,9 +81,8 @@
 	<div id = "team_list">
 		<div id = 'myTeamList'>
 		<div id = 'attackers'>
-		<fieldset>
-			<legend>Statistics</legend>
-			<table class = 'table'>
+			<h5>Statistics</h5>
+			<table class = 'table table-condensed'>
 				<tr>
 					<th>Attacker Rating</th>
 					<th>Midfielder Rating</th>
@@ -74,13 +90,12 @@
 					<th>Formation</th>
 				</tr>
 				<tr>
-					<td><span class = 'red' ng-bind = 'att_rating.toPrecision(3)'></span></td>
-					<td><span class = 'red' ng-bind = 'mid_rating.toPrecision(3)'></span></td>
-					<td><span class = 'red' ng-bind = 'def_rating.toPrecision(3)'></span></td>
+					<td><span class = 'white' ng-bind = 'att_rating.toPrecision(3)'></span></td>
+					<td><span class = 'white' ng-bind = 'mid_rating.toPrecision(3)'></span></td>
+					<td><span class = 'white' ng-bind = 'def_rating.toPrecision(3)'></span></td>
 					<td ng-bind = 'draft.formation'></td>
 				</tr>
 			</table>
-		</fieldset>
 			<ul>
 					<li ng-repeat = "attacker in attackers | orderBy: '-rating' ">
 						<a href="#/player_profile/{{attacker._id}}">
@@ -254,15 +269,15 @@
 			<option value="Arsenal">Arsenal</option>
 			<option value="Real_Madrid">Real Madrid</option>
 			<option value="Barcelona">Barcelona</option>
+			<option value="Bayern">Bayern Munich</option>
 		</select>
 		<button ng-click = 'getAITeam()' class = 'btn btn-primary'>Choose</button>
 	</div>
 
 	<div id = 'AITeamList'>
-		
-		<fieldset>
-			<legend>Statistics</legend>
-			<table class = 'table'>
+
+			<h5>Statistics</h5>
+			<table class = 'table table-condensed'>
 				<tr>
 					<th>Attacker Rating</th>
 					<th>Midfielder Rating</th>
@@ -270,13 +285,12 @@
 					<th>Formation</th>
 				</tr>
 				<tr>
-					<td><span class = 'red' ng-bind = 'AI_att_rating.toPrecision(3)'></span></td>
-					<td><span class = 'red' ng-bind = 'AI_mid_rating.toPrecision(3)'></span></td>
-					<td><span class = 'red' ng-bind = 'AI_def_rating.toPrecision(3)'></span></td>
+					<td><span class = 'white' ng-bind = 'AI_att_rating.toPrecision(3)'></span></td>
+					<td><span class = 'white' ng-bind = 'AI_mid_rating.toPrecision(3)'></span></td>
+					<td><span class = 'white' ng-bind = 'AI_def_rating.toPrecision(3)'></span></td>
 					<td ng-bind = 'AIFormation'></td>
 				</tr>
 			</table>
-		</fieldset>
 		<div id = 'AIattackers'>
 			<ul>
 					<li ng-repeat = "AIattacker in AIattackers | orderBy: '-rating' ">

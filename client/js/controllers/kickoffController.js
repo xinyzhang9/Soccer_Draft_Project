@@ -79,6 +79,8 @@ myApp.controller('kickoffController',function($scope,$routeParams,playerFactory,
 				//reset all game parameters
 				$scope.gamelogs = "";
 				$("#logs").html("Game is ready to begin...");
+				$("#time").html("0\'0\"");
+				$("#scores").html("0 : 0");
 				end = false;
 				time = 0;
 				myScore = 0;
@@ -194,6 +196,40 @@ myApp.controller('kickoffController',function($scope,$routeParams,playerFactory,
 							})
 						})
 					});
+				}else if($scope.AI_name == 'Bayern'){
+					var attackers_id = ["56e67755d259301e672e8d36","56e67755d259301e672e8d52","56e67755d259301e672e8d50"];
+					var midfielders_id = ["56e67755d259301e672e8c34","56e67755d259301e672e8c48","56e67755d259301e672e8d42","56e67755d259301e672e8d33"];
+					var defenders_id = ["56e67755d259301e672e8c3e","56e67755d259301e672e8c3f","56e67755d259301e672e8d48"];
+					var gks_id = ["56a7e5811c2d5ed1dd6504ae"];
+					$scope.AIFormation = "343";
+
+					playerFactory.getPlayersArray({arr:attackers_id},function(data){
+						$scope.AIattackers = data;
+						var sum = 0;
+						for(var x in data){
+							sum+=parseInt(data[x].rating);
+						}
+						$scope.AI_att_rating = sum/data.length;
+						playerFactory.getPlayersArray({arr:midfielders_id},function(data){
+							$scope.AImidfielders = data;
+							var sum = 0;
+							for(var x in data){
+								sum+=parseInt(data[x].rating);
+							}
+							$scope.AI_mid_rating = sum/data.length;
+							playerFactory.getPlayersArray({arr:defenders_id},function(data){
+								$scope.AIdefenders = data;
+								var sum = 0;
+								for(var x in data){
+									sum+=parseInt(data[x].rating);
+								}
+								$scope.AI_def_rating = sum/data.length;
+								playerFactory.getGKsArray({arr:gks_id},function(data){
+									$scope.AIgks = data;
+								})
+							})
+						})
+					});
 				}
 						
 			}
@@ -204,7 +240,7 @@ myApp.controller('kickoffController',function($scope,$routeParams,playerFactory,
 			var attackList = ["tried a longshot","shot inside the box","dribbled into the box","tried to beat the defend line","lost the ball to opponent"];
 			var midList = ["passed the ball to forwards","launched a though ball","successfully defended the ball","tried a longshot","gave the possession to opponent"];
 			var defendList = ["dives into tackles","blocks the passing successfully","had great advantage in the air","lost the possession"];
-			var gkList = ["made a brilliant save","got the ball right in his hands","had no chance to save that goal"];
+			var gkList = ["made a brilliant save","got the ball right in his hands","had no chance to save that goal".fontcolor("orange")];
 			var start1 = false;
 			var start2 = false;
 			var halfbreak = false;
@@ -213,7 +249,9 @@ myApp.controller('kickoffController',function($scope,$routeParams,playerFactory,
 			var AIgkAction = false;
 			var myAction = true;
 			var AIAction = false;
+
 			$scope.simulator = function(){
+				console.log(time);
 				$("#scores").html(myScore +" : "+AIScore);
 				if(!end){
 					if(!start1){
@@ -221,7 +259,7 @@ myApp.controller('kickoffController',function($scope,$routeParams,playerFactory,
 						$scope.gamelogs = str.concat($scope.gamelogs);
 						start1 = true;
 					}
-					var randomMin = Math.floor(Math.random()*6+1);
+					var randomMin = Math.floor(Math.random()*4+1);
 					var randomSecond = Math.floor(Math.random()*60);
 					time = time + randomMin;
 
@@ -237,6 +275,13 @@ myApp.controller('kickoffController',function($scope,$routeParams,playerFactory,
 					}
 					if(time >=90 && !end){
 						var str = "<p> Referee blowed the final whistle! Final score is "+$scope.username+" "+myScore+" and " + $scope.AI_name +" "+AIScore+"</p>";
+						if(myScore > AIScore){
+							var str2 = "<p>Congratulations! You won!</p>";
+							str = str2.concat(str);
+						}else{
+							var str2 = "<p>Don't be sad! Keep going!</p>";
+							str = str2.concat(str);
+						}
 						$scope.gamelogs =  str.concat($scope.gamelogs);
 						end = true;
 						$("#logs").html($scope.gamelogs);
@@ -247,7 +292,7 @@ myApp.controller('kickoffController',function($scope,$routeParams,playerFactory,
 						if(myAction){
 							var rand = Math.floor(Math.random()*3);
 							if(rand == 0){
-								var str = "<p>"+currentTime+" "+getMyAttacker() +" "+ getMyAttackerStatus() + "</p>";
+								var str = "<p>"+currentTime+" "+getMyAttacker().fontcolor("red") +" "+ getMyAttackerStatus() + "</p>";
 								if(AIgkAction){
 									var str2 = "<p>"+currentTime+" "+getAIGK() +" "+ getAIGKStatus() + "</p>";
 									str = str2.concat(str);
@@ -259,10 +304,10 @@ myApp.controller('kickoffController',function($scope,$routeParams,playerFactory,
 								
 
 							}else if(rand == 1){
-								var str = "<p>"+currentTime+" "+getMyMidfielder() +" "+ getMyMidfielderStatus() + "</p>";
+								var str = "<p>"+currentTime+" "+getMyMidfielder().fontcolor("red") +" "+ getMyMidfielderStatus() + "</p>";
 								$scope.gamelogs = str.concat($scope.gamelogs);
 							}else{
-								var str = "<p>"+currentTime+" "+getMyDefender() +" "+ getMyDefenderStatus() + "</p>";
+								var str = "<p>"+currentTime+" "+getMyDefender().fontcolor("red") +" "+ getMyDefenderStatus() + "</p>";
 								$scope.gamelogs = str.concat($scope.gamelogs);
 							}
 						}else if(AIAction){
@@ -270,7 +315,7 @@ myApp.controller('kickoffController',function($scope,$routeParams,playerFactory,
 							if(rand == 0){
 								var str = "<p>"+currentTime+" "+getAIAttacker() +" "+ getAIAttackerStatus() + "</p>";
 								if(mygkAction){
-									var str2 = "<p>"+currentTime+" "+getMyGK() +" "+ getMyGKStatus() + "</p>";
+									var str2 = "<p>"+currentTime+" "+getMyGK().fontcolor("red") +" "+ getMyGKStatus() + "</p>";
 									str = str2.concat(str);
 									$scope.gamelogs = str.concat($scope.gamelogs);
 									mygkAction = false;
@@ -286,8 +331,7 @@ myApp.controller('kickoffController',function($scope,$routeParams,playerFactory,
 								$scope.gamelogs = str.concat($scope.gamelogs);
 							}
 						}
-						
-						
+							
 						$("#logs").html($scope.gamelogs);
 					}
 						
@@ -407,6 +451,7 @@ myApp.controller('kickoffController',function($scope,$routeParams,playerFactory,
 					AIScore += 1;
 					myAction = true;
 					AIAction = false;
+
 				}
 				return gkList[rand];
 			}
@@ -417,6 +462,7 @@ myApp.controller('kickoffController',function($scope,$routeParams,playerFactory,
 					myScore += 1;
 					myAction = false;
 					AIAction = true;
+
 				}
 				return gkList[rand];
 			}
