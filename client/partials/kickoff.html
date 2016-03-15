@@ -50,6 +50,13 @@
 		#team_list{
 			display: block;
 		}
+		#scores{
+			font-size: 16px;
+			font-weight: bolder;
+		}
+		#time{
+
+		}
 
 	</style>
 </head>
@@ -443,10 +450,10 @@
 	<div class = 'wrapper'>
 		<div id = 'game'>
 			<h4>Game Simulation</h4>
-			<h4><button ng-click = "simulator()">simulate</button></h4>
+			<h4><button ng-click = "simulator()" class = "btn btn-danger" id = "simulator" disabled = true>simulate</button></h4>
 			<div id = "time">0'0"</div>
-			<div id = "scores">scores</div>
-			<div id =  "logs">logs</div>
+			<div id = "scores">0 : 0</div>
+			<div id =  "logs">Game is ready to begin...</div>
 		</div>
 
 	</div>

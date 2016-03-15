@@ -75,6 +75,23 @@ myApp.controller('kickoffController',function($scope,$routeParams,playerFactory,
 			};
 
 			$scope.getAITeam = function(){
+				$("#simulator").prop("disabled",false);
+				//reset all game parameters
+				$scope.gamelogs = "";
+				$("#logs").html("Game is ready to begin...");
+				end = false;
+				time = 0;
+				myScore = 0;
+				AIScore = 0;
+				start1 = false;
+				start2 = false;
+				halfbreak = false;
+				end = false;
+				mygkAction = false;
+				AIgkAction = false;
+				myAction = true;
+				AIAction = false;
+
 				if($scope.AI_name == 'Arsenal'){
 					var attackers_id = ["56e67755d259301e672e8d32","56e67755d259301e672e8cd8"];
 					var midfielders_id = ["56e67755d259301e672e8d43","56e67755d259301e672e8ce3","56e67755d259301e672e8c63","56e67755d259301e672e8c15"];
