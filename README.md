@@ -2,9 +2,13 @@
 I am a big soccer fan. This full-stack JavaScript web app is designed to let the user build his own soccer team.  
 The user has to select 18 players among thousands of real-world soccer players.  
 And the user can set his customized formation like 442, 433 or 343.  
+Then this team can join tournaments or friendly matches with some greatest clubs in the world like Barcelona, Real Madrid.  
 # Technology involved  
 Angular, Express, MongoDB, NodeJs  
-Then this team can join tournaments or friendly matches with some greatest clubs in the world like Barcelona, Real Madrid.  
+# live on  
+http://soccer.xinyangzhang.com  
+# demo  
+https://youtu.be/W_yiwKtcGl0  
 # Features  
 1. User Registeration and Login  with validations
 User should input a username to access the full features of this app. No password required.   
